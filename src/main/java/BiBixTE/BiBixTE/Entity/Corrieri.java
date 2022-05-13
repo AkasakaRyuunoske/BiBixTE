@@ -17,7 +17,7 @@ public class Corrieri {
     @Id
     @SequenceGenerator(
             name = "Corrieri_sequence",
-            sequenceName = "Acquisti_sequence",
+            sequenceName = "Corrieri_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
