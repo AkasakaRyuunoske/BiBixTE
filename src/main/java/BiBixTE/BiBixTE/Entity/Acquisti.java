@@ -25,7 +25,29 @@ public class Acquisti {
             generator = "Acquisti_sequence"
     )
     private Long id_acquisto;
+
+    @Id
+    @SequenceGenerator(
+            name = "Cliente_sequence",
+            sequenceName = "Cliente_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "Cliente_sequence"
+    )
     private Long id_cliente;
+
+    @Id
+    @SequenceGenerator(
+            name = "Bibita_sequence",
+            sequenceName = "Bibita_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "Bibita_sequence"
+    )
     private Long id_bibita;
     private int stock;
     private Date data_aquisto;
