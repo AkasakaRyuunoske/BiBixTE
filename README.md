@@ -1,3 +1,3 @@
 # BiBixTE
-POC Online Store
+PoC Online Store
 Antonio u really suck
