@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,6 +14,16 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Corrieri {
+    @Id
+    @SequenceGenerator(
+            name = "Corrieri_sequence",
+            sequenceName = "Acquisti_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "Corrieri_sequence"
+    )
     private Long id_corriere;
     private String nome;
     private String cognome;
