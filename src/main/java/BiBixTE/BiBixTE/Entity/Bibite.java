@@ -24,7 +24,7 @@ public class Bibite {
             strategy = GenerationType.SEQUENCE,
             generator = "Bibite_sequence"
     )
-    private Long id_bibite;
+    private Long id_bibita;
 
     @Column(name = "marca", nullable = true)
     private String marca;
@@ -38,7 +38,4 @@ public class Bibite {
     @Column(name = "quantita", nullable = true)
     private String quantita;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_bibita", referencedColumnName = "id_bibita_fk")
-    List<Acquisti> acquisti;
 }

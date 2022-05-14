@@ -25,9 +25,6 @@ public class Consegne {
             generator = "Consegne_sequence"
     )
     private Long id_consegna;
-    private Long id_cliente;
-    private Long id_bibita;
-    private Long id_corriere;
     @Column(name = "indirizzo_partenza", nullable = true)
     private String indirizzo_partenza;
 
@@ -37,13 +34,25 @@ public class Consegne {
     @Column(name = "tempo_previsto", nullable = true)
     private int tempo_previsto;
 
-    @OneToMany(cascade = CascadeType.ALL)
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
+//    List<Clienti> clienti;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_bibita_fk", referencedColumnName = "id_bibita")
+//    List<Bibite> bibite;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_corriere_fk", referencedColumnName = "id_corriere")
+//    List<Corrieri> corrieri;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
-    List<Clienti> clienti;
-    @OneToMany(cascade = CascadeType.ALL)
+    private Clienti clienti;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_bibita_fk", referencedColumnName = "id_bibita")
-    List<Bibite> bibite;
-    @OneToMany(cascade = CascadeType.ALL)
+    private Bibite bibite;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_corriere_fk", referencedColumnName = "id_corriere")
-    List<Corrieri> corrieri;
+    private Corrieri corrieri;
 }
