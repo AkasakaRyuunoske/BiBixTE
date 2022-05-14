@@ -27,10 +27,10 @@ public class Acquisti implements Serializable {
     private Double importo;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente_fk")
+    @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
     List<Clienti> clienti;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_bibita", referencedColumnName = "id_bibita_fk")
+    @JoinColumn(name = "id_bibita_fk", referencedColumnName = "id_bibita")
     List<Bibite> bibite;
 }

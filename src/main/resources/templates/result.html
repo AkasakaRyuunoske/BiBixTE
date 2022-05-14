@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Result</title>
+</head>
+<body>
+<th:block th:each="clienti : ${clienti}">
+    <tr>
+        <td th:text="${clienti.user_name}">A Smoke Test'</td>
+    </tr>
+</th:block>
+</body>
+</html>

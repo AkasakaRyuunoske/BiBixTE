@@ -28,4 +28,11 @@ public class Clienti {
     private String email;
     private String password;
     private Double conto;
+
+    //Will be used for registration
+    public Clienti(String user_name, String email, String password){
+        this.user_name = user_name;
+        this.email = email;
+        this.password = password;
+    }
 }
