@@ -24,9 +24,17 @@ public class Clienti {
             generator = "Clienti_sequence"
     )
     private Long id_cliente;
+
+    @Column(name = "user_name", nullable = false)
     private String user_name;
+
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "conto", nullable = false)
     private Double conto;
 
     //Will be used for registration

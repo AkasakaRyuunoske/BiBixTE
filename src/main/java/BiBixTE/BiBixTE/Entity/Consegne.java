@@ -28,8 +28,13 @@ public class Consegne {
     private Long id_cliente;
     private Long id_bibita;
     private Long id_corriere;
+    @Column(name = "indirizzo_partenza", nullable = true)
     private String indirizzo_partenza;
+
+    @Column(name = "indirizzo_arrivo", nullable = true)
     private String indirizzo_arrivo;
+
+    @Column(name = "tempo_previsto", nullable = true)
     private int tempo_previsto;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,8 +25,20 @@ public class Bibite {
             generator = "Bibite_sequence"
     )
     private Long id_bibite;
+
+    @Column(name = "marca", nullable = true)
     private String marca;
+
+    @Column(name = "capacita", nullable = true)
     private double capacita;
+
+    @Column(name = "descrizione", nullable = true)
     private String descrizione;
+
+    @Column(name = "quantita", nullable = true)
     private String quantita;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_bibita", referencedColumnName = "id_bibita_fk")
+    List<Acquisti> acquisti;
 }

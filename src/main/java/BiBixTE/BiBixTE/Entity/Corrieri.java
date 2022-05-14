@@ -25,8 +25,16 @@ public class Corrieri {
             generator = "Corrieri_sequence"
     )
     private Long id_corriere;
+
+    @Column(name = "nome", nullable = true)
     private String nome;
+
+    @Column(name = "cognome", nullable = true)
     private String cognome;
+
+    @Column(name = "data_di_nascita", nullable = true)
     private Date data_di_nascita;
+
+    @Column(name = "telefono", nullable = true)
     private String telefono;
 }
