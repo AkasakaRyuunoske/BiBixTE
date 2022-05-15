@@ -34,7 +34,7 @@ public class Clienti {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "conto", nullable = false)
+    @Column(name = "conto", nullable = true)
     private Double conto;
 
     //Will be used for registration
