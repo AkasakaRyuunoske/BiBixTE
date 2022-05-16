@@ -16,7 +16,8 @@ public class WebSecurityConfig {
             "/registration1",
             "/",
             "/login",
-            "/greeting"
+            "/greeting",
+            "/activate/*"
     };
 
     @Bean

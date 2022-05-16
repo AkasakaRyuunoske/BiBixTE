@@ -25,8 +25,8 @@ public class Clienti {
     )
     private Long id_cliente;
 
-    @Column(name = "user_name", nullable = false)
-    private String user_name;
+    @Column(name = "userName", nullable = false)
+    private String userName;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -37,9 +37,12 @@ public class Clienti {
     @Column(name = "conto", nullable = true)
     private Double conto;
 
+    @Column(name = "activationCode", nullable = true)
+    private String activationCode;
+
     //Will be used for registration
-    public Clienti(String user_name, String email, String password){
-        this.user_name = user_name;
+    public Clienti(String userName, String email, String password){
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }
