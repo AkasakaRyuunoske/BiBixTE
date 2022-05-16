@@ -6,9 +6,16 @@
 </head>
 <body>
 <th:block th:each="clienti : ${clienti}">
+    <h1>Grazie per la sua registrazione!</h1>
     <tr>
-        <td th:text="${clienti.user_name}">A Smoke Test'</td>
+        <td>User name:</td>
+        <td th:text="${clienti.user_name}"></td>
+        <td>Email:</td>
+        <td th:text="${clienti.email}"></td>
+        <td>Conto:</td>
+        <td th:text="${clienti.conto}"></td>
     </tr>
+    <h3>Continua a navigare il <a href="/">sito.</a></h3>
 </th:block>
 </body>
 </html>
