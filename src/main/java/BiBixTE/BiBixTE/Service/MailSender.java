@@ -24,10 +24,11 @@ public class MailSender {
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(message);
 
-        log.info("===============");
+        log.info("==========================");
         log.info("User mail: " + userMail);
         log.info("Email to is: " + emailTo);
         log.info("Subject is: " + subject);
         log.info("Message is: " + message);
+        log.info("==========================");
     }
 }
