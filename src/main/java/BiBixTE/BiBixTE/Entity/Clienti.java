@@ -35,7 +35,7 @@ public class Clienti {
     private String password;
 
     @Column(name = "conto", nullable = true)
-    private Double conto;
+    private Double conto = 50.00;
 
     @Column(name = "activationCode", nullable = true)
     private String activationCode;

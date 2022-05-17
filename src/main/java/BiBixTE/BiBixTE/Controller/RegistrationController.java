@@ -41,6 +41,7 @@ public class RegistrationController {
 
         formData.setActivationCode(UUID.randomUUID().toString());
 
+        log.info("Activation code of form data at moment of registration client:" + formData.getActivationCode());
         clientiService.registerClienti(formData);
 
         if (clienti != null){
