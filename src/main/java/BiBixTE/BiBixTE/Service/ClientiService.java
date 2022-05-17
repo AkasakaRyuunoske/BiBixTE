@@ -1,12 +1,11 @@
 package BiBixTE.BiBixTE.Service;
 
 import BiBixTE.BiBixTE.Entity.Clienti;
-import BiBixTE.BiBixTE.model.ClientiModel;
+
+import javax.mail.MessagingException;
 
 public interface ClientiService {
-    Clienti registerClienti(Clienti clienti);
-
-    void saveVerificationTokneForClienti(String token, Clienti clienti);
+    void registerClienti(Clienti clienti) throws MessagingException;
 
     boolean activateUser(String code);
 }

@@ -3,7 +3,6 @@ package BiBixTE.BiBixTE.Controller;
 import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
 import BiBixTE.BiBixTE.Service.ClientiService;
-import BiBixTE.BiBixTE.model.ClientiModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
@@ -34,7 +34,7 @@ public class RegistrationController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/registration-complete")
-    public String registration(@ModelAttribute Clienti formData, Model model){
+    public String registration(@ModelAttribute Clienti formData, Model model) throws MessagingException {
         System.out.println("Hello world!");
 
         Clienti clienti = clientiRepository.findByUserName(formData.getUserName());
@@ -70,6 +70,8 @@ public class RegistrationController {
 
     @GetMapping("/activate/{code}")
     public String activateCode(Model model, @PathVariable String code){
+
+        log.info("Code in activate code: " + code);
         boolean isActivated = clientiService.activateUser(code);
 
         if (isActivated){

@@ -1,17 +1,13 @@
 package BiBixTE.BiBixTE.Service;
 
 import BiBixTE.BiBixTE.Entity.Clienti;
-import BiBixTE.BiBixTE.Entity.VerificationToken;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
-import BiBixTE.BiBixTE.Repository.VerificationTokenRepository;
-import BiBixTE.BiBixTE.model.ClientiModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import java.util.UUID;
+import javax.mail.MessagingException;
 
 @Slf4j
 @Service
@@ -23,16 +19,11 @@ public class ClientiServiceImp implements ClientiService{
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private VerificationTokenRepository verificationTokenRepository;
-
-    @Autowired
     private MailSender mailSender;
 
 
     @Override
-    public Clienti registerClienti(Clienti clienti) {
-
-
+    public void registerClienti(Clienti clienti) throws MessagingException {
         if (!clienti.getEmail().isEmpty()){
             log.info("=====================================");
             log.info("Clienti service imp was called");
@@ -61,28 +52,16 @@ public class ClientiServiceImp implements ClientiService{
 
             mailSender.send(clienti.getEmail(), "Activation of account", theDyingMessage);
         }
-        return clienti;
     }
 
     @Override
-    public void saveVerificationTokneForClienti(String token, Clienti clienti) {
-        VerificationToken verificationToken = new VerificationToken(clienti, token);
-
-        verificationTokenRepository.save(verificationToken);
-    }
-
-    @Override
-    public boolean activateUser(String code) {
-        Clienti clienti = clientiRepository.findByActivationCode(code);
-
-        if (clienti == null){
-            System.out.println("Errore di registrazione.");;
-        }
+    public boolean activateUser(String userName) {
+        Clienti clienti = clientiRepository.findByUserName(userName);
 
         assert clienti != null;
-        clienti.setActivationCode("null");
+        clienti.setActivationCode("ACTIVATED");
         clientiRepository.save(clienti);
-
+        log.info("CLient activated! " + userName);
         return true;
     }
 
