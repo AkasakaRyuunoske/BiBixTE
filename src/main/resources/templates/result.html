@@ -7,14 +7,16 @@
 <body>
 <th:block th:each="clienti : ${clienti}">
     <h1>Grazie per la sua registrazione!</h1>
+    <p>Infromazioni sulla registrazione:</p>
     <tr>
-        <td>User name:</td>
+        <td>User name: </td>
         <td th:text="${clienti.userName}"></td>
-        <td>Email:</td>
+        <td>Email: </td>
         <td th:text="${clienti.email}"></td>
-        <td>Conto:</td>
-        <td th:text="${clienti.conto}"></td>
+        <td>Conto: </td>
+        <td>Vuoto</td>
     </tr>
+    <h3>Per attivare conto online segui indicazioni inviate via email indicata.</h3>
     <h3>Continua a navigare il <a href="/">sito.</a></h3>
 </th:block>
 </body>

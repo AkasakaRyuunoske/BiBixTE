@@ -33,20 +33,9 @@ public class ClientiServiceImp implements ClientiService{
             log.info("=====================================");
 
             String theDyingMessage = String.format("Hello, %s \n"
-                    + "Sanman de fuantei na kono sekai \n"
-                    + "Hakumei ho okoshite yo \n"
-                    + "'AI' ga seikai ni nareeee \n"
-                    + "fuante nantei kankan ni kiechate \n"
-                    + "Hakumei no hi terasu sono mukou heee \n"
-                    + "Kiroku mo kioku mo nai hito maishou \n"
-                    + "Kibuo mo mirai mo nai kuni gaishou \n"
-                    + "Nagai yoru wo oe asayake wo mita \n"
-                    + "akaku somaru senaka tooooooooo \n"
-                    + "NEE ANATA WA ITSUKA INAKU NARI MASU KA? \n"
-                    + "OWARI KAKE NO KONO SEKAI DE \n"
-                    + "YAOKE MAE NO UREI TAEGATAI KODOKU \n"
-                    + "AWAI OMOI TO SEKIBAKU WO DAITAAAAA \n"
-                    + "Actiovation here: http://localhost:8080/activate/%s",
+                    + "Grazie per la sua registrazione sull sito: https://bibixte.herokuapp.com/\n"
+                    + "Per attivare il suo account manca l'ultimo step, cioe confermare l'email seguendo link sotto:\n"
+                    + "Link per attivare: http://localhost:8080/activate/%s",
                     clienti.getUserName(),
                     clienti.getActivationCode());
 
@@ -59,6 +48,7 @@ public class ClientiServiceImp implements ClientiService{
         Clienti clienti = clientiRepository.findByActivationCode(code);
 
         clienti.setActivationCode("ACTIVATED");
+        clienti.setConto(50.00);
         clientiRepository.save(clienti);
         log.info("CLient activated! " + clienti.getUserName());
         return true;
