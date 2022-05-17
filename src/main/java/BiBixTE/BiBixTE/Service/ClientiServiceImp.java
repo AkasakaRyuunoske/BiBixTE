@@ -55,13 +55,12 @@ public class ClientiServiceImp implements ClientiService{
     }
 
     @Override
-    public boolean activateUser(String userName) {
-        Clienti clienti = clientiRepository.findByUserName(userName);
+    public boolean activateUser(String code) {
+        Clienti clienti = clientiRepository.findByActivationCode(code);
 
-        assert clienti != null;
         clienti.setActivationCode("ACTIVATED");
         clientiRepository.save(clienti);
-        log.info("CLient activated! " + userName);
+        log.info("CLient activated! " + clienti.getUserName());
         return true;
     }
 

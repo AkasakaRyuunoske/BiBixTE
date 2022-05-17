@@ -41,9 +41,10 @@ public class Clienti {
     private String activationCode;
 
     //Will be used for registration
-    public Clienti(String userName, String email, String password){
+    public Clienti(String userName, String email, String password, String activationCode){
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.activationCode = activationCode;
     }
 }
