@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head> 
 	<title>BiBixTE</title>
 
@@ -13,7 +14,6 @@
 </head>
 
 <body>
-	
 	<div class = "header">
 		<div class = "logo"></div>
 		<img src="palazzo.png" alt="">
@@ -23,17 +23,16 @@
 			<li><a href="/crediti">Contact</a></li>
 			</ul>
 		<div class = "cta">
-				<li><a href="/login" class="button"> Login </a></li>
-			</div>
+			<li th:if="${clienti.userName} == null"><a href="/login" class="button"> Login </a></li>
+			<li th:unless="${clienti.userName} == null"><p th:text="${clienti.userName}" style="background: white;"></p></li>
+		</div>
 	</div>
 	
-
 	<div class = "hero">
 		<div class = "hero-content">
 		<p class = "intro-text">Working Into</p>
 		<h1 class = "big-text">Fueling you.</h1>
 		<a href = "/registration" class = "button">Sign In</a>
-
 		</div>
 	</div>
 

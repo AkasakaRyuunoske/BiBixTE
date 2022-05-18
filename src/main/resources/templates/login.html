@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>BiBixTE</title>
 
@@ -14,13 +15,12 @@
 	<body>
 		<div  class = "form">
 			<div class = "form-content">
-			<form method="post" action = "" object = "">
-				<fieldset>
-				
-				</fieldset>
-		</form>
+				<form th:action = "@{/}" th:object = " ${cliente}" method="post">
+					<input type="text" th:field = "${cliente.userName}" name="login">
+					<input type="password" th:field = "${cliente.password}"  name="password">
+					<input type="submit" name="submit">
+				</form>
 		</div>
-
 		</div>
 	</body>
 
