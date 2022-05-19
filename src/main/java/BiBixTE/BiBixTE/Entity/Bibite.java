@@ -25,16 +25,16 @@ public class Bibite {
     )
     private Long id_bibita;
 
-    @Column(name = "marca", nullable = true)
+    @Column(name = "marca", nullable = false)
     private String marca;
 
-    @Column(name = "capacita", nullable = true)
+    @Column(name = "capacita", nullable = false)
     private double capacita;
 
     @Column(name = "descrizione", nullable = true)
     private String descrizione;
 
-    @Column(name = "quantita", nullable = true)
+    @Column(name = "quantita", nullable = false)
     private String quantita;
 
 }
