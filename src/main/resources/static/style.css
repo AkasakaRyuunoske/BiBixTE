@@ -1,4 +1,10 @@
 /*base font style*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing:  border-box;
+}
+
 body{
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;
@@ -6,7 +12,8 @@ body{
 
 a{text-decoration: none;}
 
-h1,h2,h3,h4,h5 p {color : 0000, padding-botton: 30px;}
+h1,h2,h3,h4,h5,p {color: #0f87; padding-botton: 30px;}
+
 
 .big-text{font-size: 70px; font-weight: 900;}
 .mid-text{font-size: 40px;}
@@ -32,7 +39,32 @@ h1,h2,h3,h4,h5 p {color : 0000, padding-botton: 30px;}
 	max-width: 1000px;
 }
 
+/* footer */
 
+footer{
+	
+	background: linear-gradient(0deg, darkcyan, black);
+
+	height: auto;
+	width: 100%;
+	padding-top:40px ;
+	color: #fff;
+}
+
+.footer-content{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.links p{
+	color: #fff;
+}
+
+
+/*menu*/
 .logo{}
 
 
@@ -43,10 +75,10 @@ h1,h2,h3,h4,h5 p {color : 0000, padding-botton: 30px;}
 .menu li{display: inline-block;}
 .menu li a{color: white; padding: 15px; display: block;}
 
-.cta{}
+.ct{}
 
 
-/* Hero*/
+/* Index*/
 
 
 .hero{
@@ -54,7 +86,7 @@ h1,h2,h3,h4,h5 p {color : 0000, padding-botton: 30px;}
 	display: flex;
 	width: 100%;
 	align-items: center;
-	background:linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(pepsi.jpg) no-repeat center center;
+	background:linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(pepsi.jpg)  no-repeat center center;
 	background-size: cover;
 
 }
@@ -142,7 +174,39 @@ input[type = "submit"]:hover{
 }
 
 
+/* products page */
+.product{
+	height: 700px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background: linear-gradient(0deg, rgba(0,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(
+		ghiaccio.jpg) no-repeat center center;
+	background-size: cover;
+	}
 
+	.grid-container {
+
+		position: relative;
+		left: 450px;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+column-gap: 50px;
+row-gap: 50px;
+  padding: 10px;
+}
+
+.grid-item {
+ 
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#p1{left: 200px; top: 100px; } #p2{ left:600px; top:100px; } #p3{} #p4{}
 
 /*pudding of elements */
 
