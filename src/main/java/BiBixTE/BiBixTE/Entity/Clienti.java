@@ -37,14 +37,25 @@ public class Clienti {
     @Column(name = "conto", nullable = true)
     private Double conto;
 
-    @Column(name = "activationCode", nullable = true)
-    private String activationCode;
+    @Column(name = "codiceDiAttivazione", nullable = true)
+    private String codiceDiAttivazione;
+
+    @Column(name = "ruolo", nullable = false)
+    private String ruolo = "CLIENTE"; //admin
 
     //Will be used for registration
-    public Clienti(String userName, String email, String password, String activationCode){
+    public Clienti(String userName, String email, String password, String codiceDiAttivazione){
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.activationCode = activationCode;
+        this.codiceDiAttivazione = codiceDiAttivazione;
+    }
+
+    public Clienti(String userName, String email, String password, String codiceDiAttivazione, String akasaka) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.codiceDiAttivazione = codiceDiAttivazione;
+        this.ruolo = akasaka;
     }
 }
