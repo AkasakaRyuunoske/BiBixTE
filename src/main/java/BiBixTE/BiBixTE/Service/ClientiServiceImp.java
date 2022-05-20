@@ -29,7 +29,7 @@ public class ClientiServiceImp implements ClientiService{
             log.info("Clienti service imp was called");
             log.info("Email is: " + clienti.getEmail());
             log.info("User name is: " + clienti.getUserName());
-            log.info("Code is: " + clienti.getActivationCode());
+            log.info("Code is: " + clienti.getCodiceDiAttivazione());
             log.info("=====================================");
 
             String theDyingMessage = String.format("Hello, %s \n"
@@ -37,7 +37,7 @@ public class ClientiServiceImp implements ClientiService{
                     + "Per attivare il suo account manca l'ultimo step, cioe confermare l'email seguendo link sotto:\n"
                     + "Link per attivare: https://bibixte.herokuapp.com/activate/%s",
                     clienti.getUserName(),
-                    clienti.getActivationCode());
+                    clienti.getCodiceDiAttivazione());
 
             mailSender.send(clienti.getEmail(), "Activation of account", theDyingMessage);
         }
@@ -45,9 +45,9 @@ public class ClientiServiceImp implements ClientiService{
 
     @Override
     public boolean activateUser(String code) {
-        Clienti clienti = clientiRepository.findByActivationCode(code);
+        Clienti clienti = clientiRepository.findByCodiceDiAttivazione(code);
 
-        clienti.setActivationCode("ACTIVATED");
+        clienti.setCodiceDiAttivazione("ACTIVATED");
         clienti.setConto(50.00);
         clientiRepository.save(clienti);
         log.info("CLient activated! " + clienti.getUserName());
