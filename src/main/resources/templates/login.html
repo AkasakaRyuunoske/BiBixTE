@@ -6,7 +6,7 @@
 		<title>BiBixTE</title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" th:href="@{style.css}">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap" rel="stylesheet">
@@ -15,12 +15,15 @@
 	<body>
 		<div  class = "form">
 			<div class = "form-content">
-				<form th:action = "@{/}" th:object = " ${cliente}" method="post">
-					<input type="text" th:field = "${cliente.userName}" name="login">
+				<div th:if="${param.error}">Invalid credentials</div>
+				<div th:if="${param.logout}">Logout</div>
+
+				<form th:action = "@{/login}" th:object = " ${cliente}" method="post">
+					<input type="text" th:field = "${cliente.userName}" name="username">
 					<input type="password" th:field = "${cliente.password}"  name="password">
 					<input type="submit" name="submit">
 				</form>
-		</div>
+			</div>
 		</div>
 	</body>
 
