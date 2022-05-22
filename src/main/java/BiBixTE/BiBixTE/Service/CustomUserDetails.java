@@ -9,19 +9,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
+
 @Slf4j
 public class CustomUserDetails implements UserDetails {
 
-    private Clienti clienti;
-    //todo maybe repeat every field of clienti @entity
+    public static Clienti clienti;
+    // maybe repeat every field of clienti @entity
+    // but here is not needed
 
     public CustomUserDetails(Clienti clienti) {
         //super();
         this.clienti = clienti;
-        log.info("CustomUserDetails constructor getUserName: " + clienti.getUserName());
-        log.info("CustomUserDetails constructor getPassword: " + clienti.getPassword());
-        log.info("CustomUserDetails constructor getEmail: " + clienti.getEmail());
-        log.info("CustomUserDetails constructor getId_cliente: " + clienti.getId_cliente());
+//        log.info("CustomUserDetails constructor getUserName: " + clienti.getUserName());
+//        log.info("CustomUserDetails constructor getPassword: " + clienti.getPassword());
+//        log.info("CustomUserDetails constructor getEmail: " + clienti.getEmail());
+//        log.info("CustomUserDetails constructor getId_cliente: " + clienti.getId_cliente());
     }
 
     @Override
@@ -31,14 +33,14 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        log.info("Password: " + clienti.getPassword());
+//        log.info("Password: " + clienti.getPassword());
         return clienti.getPassword();
     }
 
 
     @Override
     public String getUsername() {
-        log.info("Username: " + clienti.getUserName());
+//        log.info("Username: " + clienti.getUserName());
         return clienti.getUserName();
     }
 
