@@ -40,8 +40,8 @@ public class Clienti {
     @Column(name = "codiceDiAttivazione", nullable = true)
     private String codiceDiAttivazione;
 
-//    @Column(name = "ruolo", nullable = false)
-//    private String ruolo = "CLIENTE"; //admin
+    @Column(name = "ruolo", nullable = false)
+    private String ruolo = "CLIENTE"; //admin
 
     //Will be used for registration
     public Clienti(String userName, String email, String password, String codiceDiAttivazione){
@@ -51,11 +51,11 @@ public class Clienti {
         this.codiceDiAttivazione = codiceDiAttivazione;
     }
 
-    public Clienti(String userName, String email, String password, String codiceDiAttivazione, String akasaka) {
+    public Clienti(String userName, String email, String password, String codiceDiAttivazione, String ruolo) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.codiceDiAttivazione = codiceDiAttivazione;
-//        this.ruolo = akasaka;
+        this.ruolo = ruolo;
     }
 }
