@@ -1,3 +1,4 @@
 # BiBixTE
-PoC Online Store
-Antonio u really suck
+PoC Online Store:
+
+https://bibixte.herokuapp.com/
