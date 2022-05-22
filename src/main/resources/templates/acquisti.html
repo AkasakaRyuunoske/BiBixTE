@@ -20,14 +20,14 @@
 		<img src="bibixte.png" alt="errore">
 		<ul class = "menu">
 			<li><a href="/">Home</a></li>
-			<li><a href="">Single</a></li>
+			<li><a href="/prodotti">Prodotti</a></li>
 			<li><a href="/crediti">Contact</a></li>
 			</ul>
 			<br>
-			<h3 class = "normal-text">Your count: 50€</h3>
+			<h3 class = "normal-text" th:text="*{conto}"></h3>
 				
 		<div class = "ct">
-				<li><a href="/login" class="button"> Login </a></li>
+				<li><p class="button" th:text="*{userName}"></p></li>
 			</div>
 	</div>
 
@@ -37,7 +37,7 @@
 <div class="grid-container"> 
 
  <div class="grid-item">
-	<a class = "product-adress" href = "/acquisti">
+	<a class = "product-adress" href = "/prodotti">
 	<div class = "product-container" id = "p1">
 		<div class = "product-top">
 			<div>
@@ -54,7 +54,7 @@
 
   <div class="grid-item">
 
-	<a class = "product-adress" href = "/acquisti">
+	<a class = "product-adress" href = "/prodotti">
 			<div class = "product-container" id = "p2">
 				<div class = "product-top">
 					<img src = "monster.jpg" class = "product-img">
@@ -69,7 +69,7 @@
 
   <div class="grid-item">
 
-		<a class = "product-adress" href = "/acquisti">
+		<a class = "product-adress" href = "/prodotti">
 			<div class = "product-container" id = "p3">
 				<div class = "product-top">
 					<img src = "sprite.jpg" class = "product-img">
@@ -83,7 +83,7 @@
 </div>  
 
   <div class="grid-item">
-	<a class = "product-adress" href = "/acquisti">
+	<a class = "product-adress" href = "/prodotti">
 			<div class = "product-container" id = "p4">
 				<div class = "product-top">
 					<img src = "fanta.jpg" class = "product-img">
