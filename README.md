@@ -1,2 +1,4 @@
 # BiBixTE
-PoC Online Store
+PoC Online Store:
+
+https://bibixte.herokuapp.com/
