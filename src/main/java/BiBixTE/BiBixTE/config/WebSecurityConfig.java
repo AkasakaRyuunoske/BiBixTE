@@ -29,7 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/",
             "/greeting",
             "/crediti",
-            "/acquisti"
+            "/acquisti",
+            "/prodotti"
     };
 
     @Bean
@@ -88,7 +89,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 //                .loginPage("/login")
 //                .loginProcessingUrl("/login")
+//todo                .loginProcessingUrl("/j_spring_security_check")
                 .defaultSuccessUrl("/", true)
-                .permitAll();
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");;
     }
 }
