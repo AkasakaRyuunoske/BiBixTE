@@ -3,6 +3,7 @@ package BiBixTE.BiBixTE.Controller;
 import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
 import BiBixTE.BiBixTE.Service.ClientiDetailsService;
+import BiBixTE.BiBixTE.Service.CustomUserDetails;
 import BiBixTE.BiBixTE.Service.MailSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,15 @@ public class IndexController {
     ClientiDetailsService clientiDetailsService;
 
     @GetMapping("/")
-    public String index(@ModelAttribute Clienti clienti, Model model){
-        model.addAttribute("clienti", new Clienti());
-        System.out.println("index called");
-        if (clienti != null){
-            log.info("Clienti getUserName: " + clienti.getUserName());
-            log.info("Clienti getPassword: " + clienti.getPassword());
-            log.info("Clienti getEmail: " + clienti.getEmail());
-        }
+    public String index(Model model){
+        String userName = CustomUserDetails.clienti.getUserName();
+        String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("conto", conto);
+
+        log.info("userName: " + userName);
+        log.info("conto: " + conto);
         return "index.html";
     }
 
