@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head> 
 	<title>BiBixTE</title>
 
@@ -19,12 +20,15 @@
 		<img src="bibixte.png" alt="errore">
 		<ul class = "menu">
 			<li><a href="/">Home</a></li>
-			<li><a href="">Single</a></li>
+			<li><a href="/prodotti">Prodotti</a></li>
 			<li><a href="/crediti">Contact</a></li>
 			</ul>
+			<br>
+			<h3 class = "normal-text" th:text="*{conto}"></h3>
+			
 		<div class = "ct">
-				<li><a href="/login" class="button"> Login </a></li>
-			</div>
+				<li><p class="button" th:text="*{userName}"></p></li>
+		</div>
 	</div>
 	
 
@@ -32,8 +36,6 @@
 		<div class = "hero-content">
 		<p class = "intro-text">Working Into</p>
 		<h1 class = "big-text">Fueling you.</h1>
-		<a href = "/registration" class = "button">Sign In</a> 
-
 		</div>
 	</div>
 
