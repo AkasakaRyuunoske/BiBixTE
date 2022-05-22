@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AcquistiController {
     @GetMapping("/acquisti")
-    public String aquistiGet(){
+    public String aquistiGET(){
         return "acquisti";
     }
 
     @PostMapping("/acquisti")
-    public String aquistiPost(){
+    public String aquistiPOST(){
         return "acquisti";
     }
 }
