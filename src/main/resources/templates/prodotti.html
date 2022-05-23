@@ -182,10 +182,10 @@ function init() {
  * counting in natural
  * number (counting numbers).
  */  
- counter = number + 0
- counter1 = number1 + 0
- counter2 = number2 + 0
- counter3 = number3 + 0
+ counter = number
+ counter1 = number1 
+ counter2 = number2 
+ counter3 = number3 
   
   function increment() {
     value = counter++
@@ -242,27 +242,27 @@ function init() {
   buttonDecrement3.onclick = decrement3
 
 	document.getElementById("acquista_pepsi").onclick = function () {
-		alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
+		// alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
 
-		window.location.href = "http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter;
+		window.location.href = "https://bibixte.herokuapp.com/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter;
 	}
 
 	document.getElementById("acquista_monster").onclick = function () {
-		alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
+		// alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
 		
-		window.location.href = "http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1;
+		window.location.href = "https://bibixte.herokuapp.com/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1;
 	}
 
 	document.getElementById("acquista_sprite").onclick = function () {
-		alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
+		// alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
 		
-		window.location.href = "http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2;
+		window.location.href = "https://bibixte.herokuapp.com/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2;
 	}
 
 	document.getElementById("acquista_fanta").onclick = function () {
-		alert("http://localhost:8080/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
+		// alert("https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
 		
-		window.location.href = "http://localhost:8080/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3;
+		window.location.href = "https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3;
 	}
 }
 window.onload = init
