@@ -4,7 +4,7 @@ import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
 import BiBixTE.BiBixTE.Service.ClientiDetailsService;
 import BiBixTE.BiBixTE.Service.CustomUserDetails;
-import BiBixTE.BiBixTE.Service.MailSender;
+import BiBixTE.BiBixTE.Service.MailSenderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class IndexController {
     @Autowired
     ClientiRepository clientiRepository;
     @Autowired
-    MailSender mailSender;
+    MailSenderService mailSenderService;
     @Autowired
     PasswordEncoder passwordEncoder;
     @Autowired
