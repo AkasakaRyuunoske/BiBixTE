@@ -30,7 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/greeting",
             "/crediti",
             "/acquisti",
-            "/prodotti"
+            "/prodotti",
+            "/acquista/**",
+            "/acquista/***",
+            "/acquista/*/*/*",
     };
 
     @Bean
