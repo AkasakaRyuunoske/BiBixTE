@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 @Slf4j
 @Service
-public class MailSender {
+public class MailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
