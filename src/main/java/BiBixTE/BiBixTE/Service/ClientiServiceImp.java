@@ -54,5 +54,27 @@ public class ClientiServiceImp implements ClientiService{
         return true;
     }
 
+    @Override
+    public Double decreaseConto(Double importo) {
+        String userName = CustomUserDetails.clienti.getUserName();
+        Clienti clienti = clientiRepository.findByUserName(userName);
+        Double conto = clienti.getConto();
+
+        log.info(conto + " pre conto aggiornato");
+
+        Double conto_aggiornato = conto - importo;
+
+        log.info(conto + " post conto aggiornato");
+        log.info("conto aggiornato: " + conto_aggiornato);
+
+        clienti.setConto(conto_aggiornato);
+
+        log.info(clienti.getUserName());
+        clientiRepository.save(clienti);
+        log.info(conto + "post set conto");
+
+        return conto_aggiornato;
+    }
+
 
 }
