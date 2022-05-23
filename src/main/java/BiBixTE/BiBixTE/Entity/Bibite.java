@@ -37,4 +37,6 @@ public class Bibite {
     @Column(name = "quantita", nullable = false)
     private String quantita;
 
+    @Column(name = "costo", nullable = false)
+    private Double costo;
 }
