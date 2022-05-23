@@ -19,7 +19,7 @@ public class ClientiServiceImp implements ClientiService{
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private MailSender mailSender;
+    private MailSenderService mailSenderService;
 
 
     @Override
@@ -39,7 +39,7 @@ public class ClientiServiceImp implements ClientiService{
                     clienti.getUserName(),
                     clienti.getCodiceDiAttivazione());
 
-            mailSender.send(clienti.getEmail(), "Activation of account", theDyingMessage);
+            mailSenderService.send(clienti.getEmail(), "Activation of account", theDyingMessage);
         }
     }
 
