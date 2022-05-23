@@ -37,7 +37,7 @@
 <div class="grid-container"> 
 
  <div class="grid-item">
-	<a class = "product-adress" href = "/prodotti">
+	<div class = "product-adress" > 
 	<div class = "product-container" id = "p1">
 		<div class = "product-top">
 			<div>
@@ -46,15 +46,19 @@
 			<div class = "product-details">
 					<p class = "small-text" style = "color: #fff;">Pepsi: 30cl.</p>
 					<h4 class = "normal-text">2,5€</h4>
+					<button type="button" id="button">+</button>
+					<output id="output">0</output>
+					<button type="button" id="buttonDecrement">-</button>
+					<button id="acquista_pepsi">Acquista</button>
 			</div>
 		</div>
 	</div>
-	</a>
+	</div>
 </div>
 
   <div class="grid-item">
 
-	<a class = "product-adress" href = "/acquista/monster">
+	<div>
 			<div class = "product-container" id = "p2">
 				<div class = "product-top">
 					<img src = "monster.jpg" class = "product-img">
@@ -62,14 +66,18 @@
 				<div class = "product- details">
 					<p class = "small-text" style = "color: #fff;">Monster: 50cl.</p>
 					<h4 class = "normal-text">5€</h4>
+					<button type="button" id="button1">+</button>
+					<output id="output1">0</output>
+					<button type="button" id="buttonDecrement1">-</button>
+					<button id="acquista_monster">Acquista</button>
 				</div>
 			</div>
-		</a> 
+		</div> 
 </div>
 
   <div class="grid-item">
 
-		<a class = "product-adress" href = "/prodotti">
+		<div>
 			<div class = "product-container" id = "p3">
 				<div class = "product-top">
 					<img src = "sprite.jpg" class = "product-img">
@@ -77,13 +85,17 @@
 				<div class = "product- details">
 					<p class = "small-text" style = "color: #fff;">Sprite: 33cl.</p>
 					<h4 class = "normal-text">2,5€</h4>
+					<button type="button" id="button2">+</button>
+					<output id="output2">0</output>
+					<button type="button" id="buttonDecrement2">-</button>
+					<button id="acquista_sprite">Acquista</button>
 				</div>
 			</div>
-		</a> 
+		</div> 
 </div>  
 
   <div class="grid-item">
-	<a class = "product-adress" href = "/prodotti">
+	<div>
 			<div class = "product-container" id = "p4">
 				<div class = "product-top">
 					<img src = "fanta.jpg" class = "product-img">
@@ -91,14 +103,15 @@
 				<div class = "product- details">
 					<p class = "small-text" style = "color: #fff;">Fanta: 30cl.</p>
 					<h4 class = "normal-text">2€</h4>
+					<button type="button" id="button3">+</button>
+					<output id="output3">0</output>
+					<button type="button" id="buttonDecrement3">-</button>
+					<button id="acquista_fanta">Acquista</button>
 				</div>
 			</div>
-		</a> 
+		</div>
 </div>
 </div>
-<!--		-->
- 
-  
 </div>
 </div>
 </div>
@@ -118,5 +131,151 @@
 </footer>
 
 </body>
+<script type="text/javascript">
+var button  = document.getElementById("button");
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
 
+var buttonDecrement  = document.getElementById("buttonDecrement");
+var buttonDecrement1 = document.getElementById("buttonDecrement1");
+var buttonDecrement2 = document.getElementById("buttonDecrement2");
+var buttonDecrement3 = document.getElementById("buttonDecrement3");
+
+
+var output  = document.getElementById("output");
+var output1 = document.getElementById("output1");
+var output2 = document.getElementById("output2");
+var output3 = document.getElementById("output3");
+
+var number;
+var counter;
+
+var number1;
+var counter1;
+
+var number2;
+var counter2;
+
+var number3;
+var counter3;
+
+
+COSTO_PEPSI = 2.5;
+COSTO_MONSTER = 5.0;
+COSTO_SPRITE = 2.5;
+COSTO_FANTA = 2.0;
+ 
+
+function init() {
+ // Convert string to primitve number
+  number = parseInt(output.innerText)
+  number1 = parseInt(output1.innerText)
+  number2 = parseInt(output2.innerText)
+  number3 = parseInt(output3.innerText)
+
+  
+ /**
+ * Start counter by adding any number to start counting.
+ * In this case the ouput starts from 0 so to immediately
+ * invoke the button to increment the counter add 1 to start 
+ * counting in natural
+ * number (counting numbers).
+ */  
+ counter = number + 0
+ counter1 = number1 + 0
+ counter2 = number2 + 0
+ counter3 = number3 + 0
+  
+  function increment() {
+    value = counter++
+    output.innerText = value
+  }
+
+    function decrement() {
+    value = counter--
+    output.innerText = value
+  }
+
+    function increment1() {
+    value = counter1++
+    output1.innerText = value
+  }
+
+
+    function decrement1() {
+    value = counter1--
+    output1.innerText = value
+  }
+
+    function increment2() {
+    value = counter2++
+    output2.innerText = value
+  }
+
+
+    function decrement2() {
+    value = counter2--
+    output2.innerText = value
+  }
+
+    function increment3() {
+    value = counter3++
+    output3.innerText = value
+  }
+
+
+    function decrement3() {
+    value = counter3--
+    output3.innerText = value
+  }
+  
+  // Output the increment value for every click
+  button.onclick = increment
+  button1.onclick = increment1
+  button2.onclick = increment2
+  button3.onclick = increment3
+
+  buttonDecrement.onclick = decrement
+  buttonDecrement1.onclick = decrement1
+  buttonDecrement2.onclick = decrement2
+  buttonDecrement3.onclick = decrement3
+
+	document.getElementById("acquista_pepsi").onclick = function () {
+		alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
+
+		window.location.href = "http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter;
+	}
+
+	document.getElementById("acquista_monster").onclick = function () {
+		alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
+		
+		window.location.href = "http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1;
+	}
+
+	document.getElementById("acquista_sprite").onclick = function () {
+		alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
+		
+		window.location.href = "http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2;
+	}
+
+	document.getElementById("acquista_fanta").onclick = function () {
+		alert("http://localhost:8080/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
+		
+		window.location.href = "http://localhost:8080/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3;
+	}
+}
+window.onload = init
+
+    // var i = 0;
+    // var output = document.getElementById("output")
+    // var COSTO_PEPSI = 2.5;
+    // function buttonClick() {
+    //     i++;
+    //     document.getElementById('inc').value = i;
+    // }
+
+
+    // };
+</script>
 </html>
