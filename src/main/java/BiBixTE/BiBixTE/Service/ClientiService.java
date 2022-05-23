@@ -10,4 +10,6 @@ public interface ClientiService {
     void registerClienti(Clienti clienti) throws MessagingException;
 
     boolean activateUser(String code);
+
+    Double decreaseConto(Double importo);
 }
