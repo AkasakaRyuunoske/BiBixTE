@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Acquista Monster</title>
 </head>
 <body>
-<h1>Vuoi acquistare un monter? sicuro?</h1>
+<div th:if="${NoProductSelectedError}" th:text="*{NoProductSelectedError}">
+	<br>
+	<a href="/prodotti">Ritorna</a>
+</div>
+
+<div th:unless="${NoProductSelectedError}">
+	<h1>Informazioni sull acquisto:</h1>
+	<div>Marca prodotto: <p th:text="*{marca}" th:remove="tag"></p></div>
+	<div>descrizione prodotto: <p th:text="*{descrizione}" th:remove="tag"></p></div>
+	<div>quantita prodotto: <p th:text="*{quantita}" th:remove="tag"></p></div>
+	<div>capacita prodotto: <p th:text="*{capacita}" th:remove="tag"></p></div>
+	<div>importo prodotto: <p th:text="*{importo}" th:remove="tag"></p></div>
+	<h3>Grazie per acquisto, <div th:text="*{userName}" th:remove="tag"></div> !</h3>
+</div>
 </body>
 </html>
