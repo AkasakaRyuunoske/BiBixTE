@@ -206,6 +206,10 @@ row-gap: 50px;
   text-align: center;
 }
 
+.product-button{
+	padding: ; background: #316bff ; color: #fff; display: inline-block; border-radius: 8px; font-size: 20px; cursor: pointer;
+}
+
 #p1{left: 200px; top: 100px; } #p2{ left:600px; top:100px; } #p3{} #p4{}
 
 /*pudding of elements */
