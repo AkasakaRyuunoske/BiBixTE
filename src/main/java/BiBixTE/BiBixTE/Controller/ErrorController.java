@@ -8,21 +8,28 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RestControllerAdvice
+@ControllerAdvice
 @Slf4j
 @RequestMapping(path = "/error", produces = MediaType.APPLICATION_JSON_VALUE)
 @ResponseBody
 public class ErrorController {
+
     @ExceptionHandler(value = Exception.class)
     public String defaultErrorHandler(HttpServletRequest req, Exception e, Model model) throws Exception {
-        if (AnnotationUtils.findAnnotation
-                (e.getClass(), ResponseStatus.class) != null)
+        if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
             throw e;
+        }
 
         // Otherwise setup and send the user to a default error-view.
         model.addAttribute("exception", e);
         model.addAttribute("url", req.getRequestURL());
-        return "clienteGiaEssiste";
+
+        log.info("Resolved: " + e);
+        log.info("Resolved: " + req.getRequestURL());
+
+        return "<h1>Errore di tipo generico</h1>" +
+                "<h2>Possibili motivi sono:" +
+                "<ul>L'utente non attivato</ul></h2>";
     }
 //    @ExceptionHandler(NoHandlerFoundException.class)
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
