@@ -7,7 +7,7 @@ import javax.mail.MessagingException;
 
 @Service
 public interface ClientiService {
-    void registerClienti(Clienti clienti) throws MessagingException;
+    void sendConfirmMail(Clienti clienti) throws MessagingException;
 
     boolean activateUser(String code);
 
