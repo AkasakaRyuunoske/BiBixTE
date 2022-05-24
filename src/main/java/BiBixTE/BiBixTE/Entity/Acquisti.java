@@ -16,16 +16,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class Acquisti implements Serializable {
+
     @Id
     @SequenceGenerator(name = "Acquisti_sequence", sequenceName = "Acquisti_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Acquisti_sequence")
     private Long id_acquisto;
-
-//    @Column(name = "id_cliente", nullable = false)
-//    private Long id_cliente;
-//
-//    @Column(name = "id_bibita", nullable = false)
-//    private Long id_bibita;
 
     @Column(name = "stock", nullable = false)
     private int stock;
@@ -38,12 +33,6 @@ public class Acquisti implements Serializable {
 
     @Column(name = "descrizione", nullable = false)
     private String descrizione;
-
-//    @Column(name = "id_cliente_fk", nullable = true)
-//    private Long id_cliente_fk;
-//
-//    @Column(name = "id_bibita_fk", nullable = true)
-//    private Long id_bibita_fk;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
