@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Cliente gia essiste</title>
 </head>
 <body>
 	<h1>Qualcosa e' andato male  :( </h1>
+	<div th:text="*{exception}"></div>
+	<div th:text="*{url}"></div>
 </body>
 </html>
