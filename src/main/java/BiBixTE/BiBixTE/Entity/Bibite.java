@@ -35,7 +35,7 @@ public class Bibite {
     private String descrizione;
 
     @Column(name = "quantita", nullable = false)
-    private String quantita;
+    private int quantita;
 
     @Column(name = "costo", nullable = false)
     private Double costo;
