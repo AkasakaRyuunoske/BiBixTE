@@ -32,7 +32,7 @@ public class ClientiServiceImp implements ClientiService{
             log.info("Code is: " + clienti.getCodiceDiAttivazione());
             log.info("=====================================");
 
-            String theDyingMessage = String.format("Hello, %s \n"
+            String theDyingMessage = String.format("Ciao, %s \n"
                     + "Grazie per la sua registrazione sull sito: https://bibixte.herokuapp.com/\n"
                     + "Per attivare il suo account manca l'ultimo step, cioe confermare l'email seguendo link sotto:\n"
                     + "Link per attivare: https://bibixte.herokuapp.com/activate/%s",
