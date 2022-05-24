@@ -78,7 +78,7 @@ public class AcquistiController {
                 clientiServiceImp.decreaseConto(importo);
 
                 int starting_quantita = bibita.getQuantita();
-                bibita.setQuantita(starting_quantita--);
+                bibita.setQuantita(starting_quantita - quantita);
 
 
 
