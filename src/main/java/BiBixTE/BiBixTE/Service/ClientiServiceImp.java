@@ -23,7 +23,7 @@ public class ClientiServiceImp implements ClientiService{
 
 
     @Override
-    public void registerClienti(Clienti clienti) throws MessagingException {
+    public void sendConfirmMail(Clienti clienti) throws MessagingException {
         if (!clienti.getEmail().isEmpty()){
             log.info("=====================================");
             log.info("Clienti service imp was called");
