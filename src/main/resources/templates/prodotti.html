@@ -4,17 +4,14 @@
 	  xmlns:th="http://www.thymeleaf.org">
 <head> 
 	<title>BiBixTE</title>
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="style.css"> 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-	
 	<div class = "header">
 		<div class = "logo"></div>
 		<img src="bibixte.png" alt="errore">
@@ -22,99 +19,107 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/prodotti">Products</a></li>
 			<li><a href="/crediti">Contact</a></li>
-			</ul>
+		</ul>
 			<br>
+
 			<h3 class = "normal-text" th:text="*{conto}"></h3>
-				
+
 		<div class = "ct">
-				<li><p class="button" th:text="*{userName}"></p></li>
-			</div>
+				<li><a href="/logout" class="button" th:text="*{userName}"></a></li>
+		</div>
 	</div>
 
 <div class = "product">
 	<div class = "product-content">
+		<div class="grid-container"> 
+	 		<div class="grid-item">
+				<div class = "product-adress" > 
+					<div class = "product-container" id = "p1">
+						<div class = "product-top">
+							<div>
+								<img src = "pepsi.png" class = "product-img">
+							</div>
 
-<div class="grid-container"> 
+							<div class = "product-details">
 
- <div class="grid-item">
-	<div class = "product-adress" > 
-	<div class = "product-container" id = "p1">
-		<div class = "product-top">
-			<div>
-				<img src = "pepsi.png" class = "product-img">
-			</div>
-			<div class = "product-details">
-					<p class = "small-text" style = "color: #fff;">Pepsi: 30cl.</p>
-					<h4 class = "normal-text">2,5€</h4>
-					<button type="button" id="button">+</button>
-					<output id="output">0</output>
-					<button type="button" id="buttonDecrement">-</button>
-					<button id="acquista_pepsi">Acquista</button>
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
+								<p class = "small-text" style = "color: #fff;">Pepsi: 30cl.</p>
+								<h4 class = "normal-text">2,5€</h4>
+								<button type="button" id="button_increment_pepsi">+</button>
+								<output id="output_pepsi">0</output>
+								<button type="button" id="button_decrement_pepsi">-</button>
+								<button id="acquista_pepsi">Acquista</button>
 
-  <div class="grid-item">
-
-	<div>
-			<div class = "product-container" id = "p2">
-				<div class = "product-top">
-					<img src = "monster.jpg" class = "product-img">
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
+
+	<div class="grid-item">
+	<div>
+		<div class = "product-container" id = "p2">
+
+			<div class = "product-top">
+				<img src = "monster.jpg" class = "product-img">
+			</div>
+
 				<div class = "product- details">
+
 					<p class = "small-text" style = "color: #fff;">Monster: 50cl.</p>
 					<h4 class = "normal-text">5€</h4>
-					<button type="button" id="button1">+</button>
-					<output id="output1">0</output>
-					<button type="button" id="buttonDecrement1">-</button>
+					<button type="button" id="button_increment_monster">+</button>
+					<output id="output_monster">0</output>
+					<button type="button" id="button_decrement_monster">-</button>
 					<button id="acquista_monster">Acquista</button>
+
 				</div>
 			</div>
 		</div> 
-</div>
-
-  <div class="grid-item">
-
-		<div>
-			<div class = "product-container" id = "p3">
-				<div class = "product-top">
-					<img src = "sprite.jpg" class = "product-img">
-				</div>
-				<div class = "product- details">
-					<p class = "small-text" style = "color: #fff;">Sprite: 33cl.</p>
-					<h4 class = "normal-text">2,5€</h4>
-					<button type="button" id="button2">+</button>
-					<output id="output2">0</output>
-					<button type="button" id="buttonDecrement2">-</button>
-					<button id="acquista_sprite">Acquista</button>
-				</div>
-			</div>
-		</div> 
-</div>  
+	</div>
 
   <div class="grid-item">
 	<div>
+		<div class = "product-container" id = "p3">
+			<div class = "product-top">
+				<img src = "sprite.jpg" class = "product-img">
+			</div>
+				<div class = "product- details">
+
+					<p class = "small-text" style = "color: #fff;">Sprite: 33cl.</p>
+					<h4 class = "normal-text">2,5€</h4>
+					<button type="button" id="button_increment_sprite">+</button>
+					<output id="output_sprite">0</output>
+					<button type="button" id="button_decrement_sprite">-</button>
+					<button id="acquista_sprite">Acquista</button>
+
+				</div>
+			</div>
+		</div> 
+	</div>  
+
+  <div class="grid-item">
+		<div>
 			<div class = "product-container" id = "p4">
 				<div class = "product-top">
 					<img src = "fanta.jpg" class = "product-img">
 				</div>
+
 				<div class = "product- details">
 					<p class = "small-text" style = "color: #fff;">Fanta: 30cl.</p>
 					<h4 class = "normal-text">2€</h4>
-					<button type="button" id="button3">+</button>
-					<output id="output3">0</output>
-					<button type="button" id="buttonDecrement3">-</button>
+					<button type="button" id="button_increment_fanta">+</button>
+					<output id="output_fanta">0</output>
+					<button type="button" id="button_decrement_fanta">-</button>
 					<button id="acquista_fanta">Acquista</button>
 				</div>
 			</div>
 		</div>
+	</div>
 </div>
 </div>
 </div>
 </div>
-</div>
+
 <footer>
 	<div class= "footer-content">
   <p class = "normal-text" style =" color :#fff ;">Discover more about </p>
@@ -132,140 +137,170 @@
 
 </body>
 <script type="text/javascript">
-var button  = document.getElementById("button");
-var button1 = document.getElementById("button1");
-var button2 = document.getElementById("button2");
-var button3 = document.getElementById("button3");
-
-var buttonDecrement  = document.getElementById("buttonDecrement");
-var buttonDecrement1 = document.getElementById("buttonDecrement1");
-var buttonDecrement2 = document.getElementById("buttonDecrement2");
-var buttonDecrement3 = document.getElementById("buttonDecrement3");
-
-
-var output  = document.getElementById("output");
-var output1 = document.getElementById("output1");
-var output2 = document.getElementById("output2");
-var output3 = document.getElementById("output3");
-
-var number;
-var counter;
-
-var number1;
-var counter1;
-
-var number2;
-var counter2;
-
-var number3;
-var counter3;
-
-
+	// cost of every product
 COSTO_PEPSI = 2.5;
 COSTO_MONSTER = 5.0;
 COSTO_SPRITE = 2.5;
 COSTO_FANTA = 2.0;
- 
 
-function init() {
- // Convert string to primitve number
-  number = parseInt(output.innerText)
-  number1 = parseInt(output1.innerText)
-  number2 = parseInt(output2.innerText)
-  number3 = parseInt(output3.innerText)
+	// prefix of url
+PREFIX = "http://localhost:8080/";
 
-  
- /**
- * Start counter by adding any number to start counting.
- * In this case the ouput starts from 0 so to immediately
- * invoke the button to increment the counter add 1 to start 
- * counting in natural
- * number (counting numbers).
- */  
- counter = number
- counter1 = number1 
- counter2 = number2 
- counter3 = number3 
-  
-  function increment() {
-    value = counter++
-    output.innerText = value
+
+function increment_pepsi_counter() {
+    counter_pepsi = parseInt(output_pepsi.innerHTML);
+    counter_pepsi++;
+    output_pepsi.innerHTML = counter_pepsi; 
   }
 
-    function decrement() {
-    value = counter--
-    output.innerText = value
-  }
-
-    function increment1() {
-    value = counter1++
-    output1.innerText = value
+   function decrement_pepsi_counter() {
+    counter_pepsi--;
+    output_pepsi.innerText = counter_pepsi;
   }
 
 
-    function decrement1() {
-    value = counter1--
-    output1.innerText = value
+// Pepsi element 
+var output_pepsi  = document.getElementById("output_pepsi");
+var counter_pepsi = 0;
+var button_increment_pepsi  = document.getElementById("button_increment_pepsi");
+var button_decrement_pepsi  = document.getElementById("button_decrement_pepsi");
+
+button_increment_pepsi.onclick = increment_pepsi_counter;
+button_decrement_pepsi.onclick = decrement_pepsi_counter;
+//
+
+
+function increment_monster_counter() {
+    counter_monster = parseInt(output_monster.innerHTML);
+    counter_monster++;
+    output_monster.innerHTML = counter_monster; 
   }
 
-    function increment2() {
-    value = counter2++
-    output2.innerText = value
+   function decrement_monster_counter() {
+    counter_monster--;
+    output_monster.innerText = counter_monster;
+  }
+
+// Monster element 
+var output_monster  = document.getElementById("output_monster");
+var counter_monster = 0;
+var button_increment_monster  = document.getElementById("button_increment_monster");
+var button_decrement_monster  = document.getElementById("button_decrement_monster");
+
+button_increment_monster.onclick = increment_monster_counter;
+button_decrement_monster.onclick = decrement_monster_counter;
+//
+
+function increment_sprite_counter() {
+    counter_sprite = parseInt(output_sprite.innerHTML);
+    counter_sprite++;
+    output_sprite.innerHTML = counter_sprite; 
+  }
+
+   function decrement_sprite_counter() {
+    counter_sprite--;
+    output_sprite.innerText = counter_sprite;
+  }
+
+// Sprite element 
+var output_sprite  = document.getElementById("output_sprite");
+var counter_sprite = 0;
+var button_increment_sprite  = document.getElementById("button_increment_sprite");
+var button_decrement_sprite  = document.getElementById("button_decrement_sprite");
+
+button_increment_sprite.onclick = increment_sprite_counter;
+button_decrement_sprite.onclick = decrement_sprite_counter;
+//
+
+function increment_fanta_counter() {
+    counter_fanta = parseInt(output_fanta.innerHTML);
+    counter_fanta++;
+    output_fanta.innerHTML = counter_fanta; 
+  }
+
+   function decrement_fanta_counter() {
+    counter_fanta--;
+    output_fanta.innerText = counter_fanta;
   }
 
 
-    function decrement2() {
-    value = counter2--
-    output2.innerText = value
-  }
+// Fanta element 
+var output_fanta  = document.getElementById("output_fanta");
+var counter_fanta = 0;
+var button_increment_fanta  = document.getElementById("button_increment_fanta");
+var button_decrement_fanta  = document.getElementById("button_decrement_fanta");
 
-    function increment3() {
-    value = counter3++
-    output3.innerText = value
-  }
+button_increment_fanta.onclick = increment_fanta_counter;
+button_decrement_fanta.onclick = decrement_fanta_counter;
+//
 
+document.getElementById("acquista_pepsi").onclick = function () {
+// alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
+	if (counter_pepsi < 0) {
 
-    function decrement3() {
-    value = counter3--
-    output3.innerText = value
-  }
-  
-  // Output the increment value for every click
-  button.onclick = increment
-  button1.onclick = increment1
-  button2.onclick = increment2
-  button3.onclick = increment3
+		alert("Non puoi acquistare " + counter_pepsi + " pepsi!");
 
-  buttonDecrement.onclick = decrement
-  buttonDecrement1.onclick = decrement1
-  buttonDecrement2.onclick = decrement2
-  buttonDecrement3.onclick = decrement3
+	} else {
 
-	document.getElementById("acquista_pepsi").onclick = function () {
-		// alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
-
-		window.location.href = "https://bibixte.herokuapp.com/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter;
-	}
-
-	document.getElementById("acquista_monster").onclick = function () {
-		// alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
-		
-		window.location.href = "https://bibixte.herokuapp.com/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1;
-	}
-
-	document.getElementById("acquista_sprite").onclick = function () {
-		// alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
-		
-		window.location.href = "https://bibixte.herokuapp.com/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2;
-	}
-
-	document.getElementById("acquista_fanta").onclick = function () {
-		// alert("https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
-		
-		window.location.href = "https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3;
+		window.location.href = 
+		PREFIX + "acquista/pepsi/" 
+		+ COSTO_PEPSI * counter_pepsi 
+		+ "/" 
+		+ counter_pepsi;
 	}
 }
-window.onload = init
+
+document.getElementById("acquista_monster").onclick = function () {
+// alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
+	if (counter_monster < 0) {
+
+		alert("Non puoi acquistare " + counter_monster + " monster!");
+
+	} else {
+
+	window.location.href = 
+	PREFIX + "acquista/monster/" 
+	+ COSTO_MONSTER * counter_monster
+	+ "/" 
+	+ counter_monster;
+
+	}
+}
+
+document.getElementById("acquista_sprite").onclick = function () {
+// alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
+	if (counter_sprite < 0) {
+
+		alert("Non puoi acquistare " + counter_sprite + " sprite!");
+
+	} else {
+
+	window.location.href = 
+	PREFIX + "acquista/sprite/" 
+	+ COSTO_SPRITE * counter_sprite 
+	+ "/" 
+	+ counter_sprite;
+
+	}
+}
+
+document.getElementById("acquista_fanta").onclick = function () {
+// alert("https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
+	if (counter_fanta < 0) {
+
+		alert("Non puoi acquistare " + counter_fanta + " fanta!");
+
+	} else {
+
+	window.location.href = 
+	PREFIX + "acquista/fanta/" 
+	+ COSTO_FANTA * counter_fanta 
+	+ "/" 
+	+ counter_fanta;
+
+	}
+}
+
 
     // var i = 0;
     // var output = document.getElementById("output")
