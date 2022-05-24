@@ -25,7 +25,7 @@
 			<h3 class = "normal-text" th:text="*{conto}"></h3>
 
 		<div class = "ct">
-				<li><a href="/logout" class="button" th:text="*{userName}"></a></li>
+			<li><a href="/logout" class="button" th:text="*{userName}"></a></li>
 		</div>
 	</div>
 
@@ -41,42 +41,34 @@
 							</div>
 
 							<div class = "product-details">
-
 								<p class = "small-text" style = "color: #fff;">Pepsi: 30cl.</p>
 								<h4 class = "normal-text">2,5€</h4>
 								<button type="button" id="button_increment_pepsi">+</button>
 								<output id="output_pepsi">0</output>
 								<button type="button" id="button_decrement_pepsi">-</button>
 								<button id="acquista_pepsi">Acquista</button>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 	<div class="grid-item">
 	<div>
 		<div class = "product-container" id = "p2">
-
 			<div class = "product-top">
 				<img src = "monster.jpg" class = "product-img">
 			</div>
-
 				<div class = "product- details">
-
 					<p class = "small-text" style = "color: #fff;">Monster: 50cl.</p>
 					<h4 class = "normal-text">5€</h4>
 					<button type="button" id="button_increment_monster">+</button>
 					<output id="output_monster">0</output>
 					<button type="button" id="button_decrement_monster">-</button>
 					<button id="acquista_monster">Acquista</button>
-
 				</div>
 			</div>
 		</div> 
 	</div>
-
   <div class="grid-item">
 	<div>
 		<div class = "product-container" id = "p3">
@@ -84,26 +76,22 @@
 				<img src = "sprite.jpg" class = "product-img">
 			</div>
 				<div class = "product- details">
-
 					<p class = "small-text" style = "color: #fff;">Sprite: 33cl.</p>
 					<h4 class = "normal-text">2,5€</h4>
 					<button type="button" id="button_increment_sprite">+</button>
 					<output id="output_sprite">0</output>
 					<button type="button" id="button_decrement_sprite">-</button>
 					<button id="acquista_sprite">Acquista</button>
-
 				</div>
 			</div>
 		</div> 
 	</div>  
-
   <div class="grid-item">
 		<div>
 			<div class = "product-container" id = "p4">
 				<div class = "product-top">
 					<img src = "fanta.jpg" class = "product-img">
 				</div>
-
 				<div class = "product- details">
 					<p class = "small-text" style = "color: #fff;">Fanta: 30cl.</p>
 					<h4 class = "normal-text">2€</h4>
@@ -134,7 +122,6 @@
   <br>
 </div>
 </footer>
-
 </body>
 <script type="text/javascript">
 	// cost of every product
@@ -235,7 +222,6 @@ button_decrement_fanta.onclick = decrement_fanta_counter;
 //
 
 document.getElementById("acquista_pepsi").onclick = function () {
-// alert("http://localhost:8080/acquista/pepsi/" + COSTO_PEPSI * counter + "/" + counter);
 	if (counter_pepsi < 0) {
 
 		alert("Non puoi acquistare " + counter_pepsi + " pepsi!");
@@ -251,7 +237,6 @@ document.getElementById("acquista_pepsi").onclick = function () {
 }
 
 document.getElementById("acquista_monster").onclick = function () {
-// alert("http://localhost:8080/acquista/monster/" + COSTO_MONSTER * counter1 + "/" + counter1);
 	if (counter_monster < 0) {
 
 		alert("Non puoi acquistare " + counter_monster + " monster!");
@@ -268,7 +253,6 @@ document.getElementById("acquista_monster").onclick = function () {
 }
 
 document.getElementById("acquista_sprite").onclick = function () {
-// alert("http://localhost:8080/acquista/sprite/" + COSTO_SPRITE * counter2 + "/" + counter2);
 	if (counter_sprite < 0) {
 
 		alert("Non puoi acquistare " + counter_sprite + " sprite!");
@@ -285,7 +269,6 @@ document.getElementById("acquista_sprite").onclick = function () {
 }
 
 document.getElementById("acquista_fanta").onclick = function () {
-// alert("https://bibixte.herokuapp.com/acquista/fanta/" + COSTO_FANTA * counter3 + "/" + counter3);
 	if (counter_fanta < 0) {
 
 		alert("Non puoi acquistare " + counter_fanta + " fanta!");
@@ -300,17 +283,5 @@ document.getElementById("acquista_fanta").onclick = function () {
 
 	}
 }
-
-
-    // var i = 0;
-    // var output = document.getElementById("output")
-    // var COSTO_PEPSI = 2.5;
-    // function buttonClick() {
-    //     i++;
-    //     document.getElementById('inc').value = i;
-    // }
-
-
-    // };
 </script>
 </html>
