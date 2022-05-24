@@ -72,6 +72,9 @@ public class AcquistiController {
                     id_cliente
                     );
 
+            int starting_quantita = bibita.getQuantita();
+            bibita.setQuantita(starting_quantita--);
+
             acquistiRepository.save(acquisti);
 
             Clienti clienti = clientiRepository.findByUserName(userName);
