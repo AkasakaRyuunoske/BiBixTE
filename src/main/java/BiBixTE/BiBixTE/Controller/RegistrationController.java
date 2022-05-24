@@ -42,25 +42,13 @@ public class RegistrationController {
 
         formData.setCodiceDiAttivazione(UUID.randomUUID().toString());
         log.info("Activation code of form data at moment of registration client:" + formData.getCodiceDiAttivazione());
-        clientiService.registerClienti(formData);
+        clientiService.sendConfirmMail(formData);
 
-//        if (formData.getUserName().equals("Akasaka") & formData.getPassword().equals("akasakaryuunoske1@gmail.com") ) {
-//            clientiRepository.save(new Clienti(formData.getUserName(),
-//                    formData.getEmail(),
-//                    passwordEncoder.encode(formData.getPassword()),
-//                    formData.getCodiceDiAttivazione(),
-//                    "AKASAKA"));
-//            log.info("Akasaka Appears");
-//        } else {
             clientiRepository.save(new Clienti(formData.getUserName(),
                     formData.getEmail(),
                     passwordEncoder.encode(formData.getPassword()),
                     formData.getCodiceDiAttivazione()));
 
-//        log.info("matching pass result : " +
-//                passwordEncoder
-//                        .matches("pussy_destroer2022",
-//                                "$2a$11$zl00U7ztEJaMo6MNIB9TW.gQnwIMVkYzOpl5DwIUV9LWpCJOWe6Ji"));
         model.addAttribute("formData", formData);
 
         return "result";
