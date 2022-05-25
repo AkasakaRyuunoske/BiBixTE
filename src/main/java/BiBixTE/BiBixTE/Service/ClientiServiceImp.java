@@ -1,7 +1,12 @@
 package BiBixTE.BiBixTE.Service;
 
+import BiBixTE.BiBixTE.Entity.Acquisti;
+import BiBixTE.BiBixTE.Entity.Bibite;
 import BiBixTE.BiBixTE.Entity.Clienti;
+import BiBixTE.BiBixTE.Entity.Corrieri;
+import BiBixTE.BiBixTE.Repository.AcquistiRepository;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
+import BiBixTE.BiBixTE.Repository.CorrieriRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +26,11 @@ public class ClientiServiceImp implements ClientiService{
     @Autowired
     private MailSenderService mailSenderService;
 
+    @Autowired
+    private CorrieriRepository corrieriRepository;
+
+    @Autowired
+    private AcquistiRepository acquistiRepository;
 
     @Override
     public void sendConfirmMail(Clienti clienti) throws MessagingException {
@@ -40,6 +50,38 @@ public class ClientiServiceImp implements ClientiService{
                     clienti.getCodiceDiAttivazione());
 
             mailSenderService.send(clienti.getEmail(), "Activation of account", theDyingMessage);
+        }
+    }
+
+    @Override
+    public void sendConfirmAcquistoMail(Clienti clienti, Bibite bibita, Acquisti acquisti, Double importo, int quantita_bibite_acquistate) throws MessagingException {
+        log.info("is called");
+        if (!clienti.getEmail().isEmpty()){
+
+            Corrieri corriere = corrieriRepository.findByNome("Paolo");
+            String marca_bibita = bibita.getMarca();
+
+            log.info("=====================================");
+            log.info("Clienti service imp was called");
+            log.info("Email is: " + clienti.getEmail());
+            log.info("User name is: " + clienti.getUserName());
+            log.info("Code is: " + clienti.getCodiceDiAttivazione());
+            log.info("=====================================");
+
+            String theDyingMessage = String.format("Ciao, %s \n"
+                            + "Grazie per il suo acquisto sull sito: https://bibixte.herokuapp.com/\n"
+                            + "Il suo acquisto vera consegnato dall corriere:%s\n"
+                            + "",
+                            clienti.getUserName(),
+                            corriere.getNome()
+                            + " "
+                            + corriere.getCognome() + "\n"
+                            + "Detagli sull acquisto effetuato:\n"
+                            + "Quantita di bibite acquistate:" + quantita_bibite_acquistate + "\n"
+                            + "Marca di bibita acquistata: " + marca_bibita + "\n"
+                            + "Importo totale da pagare: " + importo);
+
+            mailSenderService.send(clienti.getEmail(), "Detagli sull Acquisto", theDyingMessage);
         }
     }
 
