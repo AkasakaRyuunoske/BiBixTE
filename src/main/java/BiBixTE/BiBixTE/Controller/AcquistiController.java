@@ -80,8 +80,6 @@ public class AcquistiController {
                 int starting_quantita = bibita.getQuantita();
                 bibita.setQuantita(starting_quantita - quantita);
 
-
-
                 bibiteRepository.save(bibita);
                 acquistiRepository.save(acquisti);
             } else {
