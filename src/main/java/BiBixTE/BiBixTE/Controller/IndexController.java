@@ -31,6 +31,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model){
+
         String userName = CustomUserDetails.clienti.getUserName();
         String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
 
@@ -73,7 +74,13 @@ public class IndexController {
     }
 
     @GetMapping("/crediti")
-    public String crediti(){
+    public String crediti(Model model){
+
+        String userName = CustomUserDetails.clienti.getUserName();
+        String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("conto", conto);
         return "crediti.html";
     }
 }
