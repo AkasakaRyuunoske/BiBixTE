@@ -23,19 +23,15 @@ import java.time.LocalTime;
 public class AcquistiController {
     @Autowired
     AcquistiRepository acquistiRepository;
+
     @Autowired
     BibiteRepository bibiteRepository;
+
     @Autowired
     ClientiRepository clientiRepository;
+
     @Autowired
     ClientiServiceImp clientiServiceImp;
-
-    //deprecated but may be needed as a reference
-//    @GetMapping("/acquista/monster")
-//    public String aquistiGET(Model model){
-//        log.info("Prodotto: monster");
-//        return "acquisti";
-//    }
 
     @GetMapping("/acquista/{nome_bibita}/{importo}/{quantita}")
     public String aquistiBibitaGET(Model model,
@@ -55,10 +51,10 @@ public class AcquistiController {
         Bibite bibita = bibiteRepository.findByMarca(nome_bibita);
         String acquisti_descrizione = "Prodotti acquistati: " + bibita.getMarca();
 
-        model.addAttribute("marca", bibita.getMarca());
+        model.addAttribute("marca", nome_bibita);
         model.addAttribute("descrizione", bibita.getDescrizione());
-        model.addAttribute("quantita", bibita.getQuantita());
         model.addAttribute("capacita", bibita.getCapacita());
+        model.addAttribute("quantita",quantita);
         model.addAttribute("importo", importo);
         model.addAttribute("userName", userName);
 
