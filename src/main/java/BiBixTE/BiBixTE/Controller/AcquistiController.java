@@ -47,9 +47,7 @@ public class AcquistiController {
 
         if (quantita == 0){
             log.info("No pepsi? :(");
-            model.addAttribute("NoProductSelectedError",
-                    "Nessun prodotto selezionato.");
-            return "acquisti";
+            return "err-product";
         }
 
         Bibite bibita = bibiteRepository.findByMarca(nome_bibita);
