@@ -29,7 +29,13 @@ public class ErrorController {
 
         return "<h1>Errore di tipo generico</h1>" +
                 "<h2>Possibili motivi sono:" +
-                "<ul>L'utente non attivato</ul></h2>";
+                "<ul>L'utente non attivato</ul>" +
+                "<ul>Errore di connessione</ul>" +
+                "<ul>Errore parte server</ul>" +
+                "<ul>Errore non previsto</ul></h2><br>" +
+                "<h1>Azioni da fare:" +
+                "<ul>Riprovare dopo</ul>" +
+                "<ul>Contatare administratore</ul>";
     }
 //    @ExceptionHandler(NoHandlerFoundException.class)
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
