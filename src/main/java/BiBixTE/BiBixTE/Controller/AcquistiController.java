@@ -71,8 +71,9 @@ public class AcquistiController {
                     bibita.getId_bibita(),
                     id_cliente
                     );
-            Clienti clienti = clientiRepository.findByUserName(userName);
-            Double conto = clienti.getConto();
+
+            Clienti cliente = clientiRepository.findByUserName(userName);
+            Double conto = cliente.getConto();
             if (conto > importo) {
 
                 clientiServiceImp.decreaseConto(importo);
@@ -82,6 +83,14 @@ public class AcquistiController {
 
                 bibiteRepository.save(bibita);
                 acquistiRepository.save(acquisti);
+
+                log.info("Cliente" + cliente);
+                log.info("bibita" + acquisti);
+                log.info("importo" + importo);
+                log.info("acquisti" + acquisti);
+
+                clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita);
+
             } else {
                 return "clienteGiaEssiste";
             }
