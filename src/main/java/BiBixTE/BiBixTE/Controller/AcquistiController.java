@@ -92,12 +92,12 @@ public class AcquistiController {
                 clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita);
 
             } else {
-                return "clienteGiaEssiste";
+                return "err-general";
             }
 
         }catch (Exception exception){
 
-            return "clienteGiaEssiste";
+            return "err-general";
         }
 
         log.info("=====================================");
