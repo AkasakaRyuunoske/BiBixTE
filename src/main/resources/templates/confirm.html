@@ -44,16 +44,14 @@
 
 		<!-- p with product added to cart, quantity, price and amount of money spent -->
 
-			<p class = "intro-text">You sure you want to buy</p>
-			<h1 class = "big-text">Pepsi. (2)</h1>
-			<p class = "mid-text">for 5 euros?</p>
+			<p class = "intro-text">You are buying:</p>
+			<h1 class = "big-text">
+				<p th:text="*{marca}"></p>
+				<p th:text="*{quantita}"></p>
+			</h1>
+			<p class = "mid-text">for<p th:text="*{importo}"></p> ?</p>
 
 			<br>
-
-			<h1 class = "big-text"></h1>
-
-			<a href = "/check-out" class = "button">Confirm.</a> 
-			<a href = "/products" class = "button">Decline.</a>
 		</div>
 	</div>
 
