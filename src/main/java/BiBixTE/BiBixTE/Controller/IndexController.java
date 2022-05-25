@@ -37,13 +37,16 @@ public class IndexController {
 
         log.info("userName: " + userName);
         log.info("conto: " + conto);
+
         return "index.html";
     }
 
     @PostMapping("/")
     public String indexPost(@ModelAttribute Clienti formData, Model model){
         log.info("Form data: " + formData.getUserName());
+
         clientiDetailsService.loadUserByUsername(formData.getUserName());
+
         return "index.html";
     }
 
@@ -55,6 +58,7 @@ public class IndexController {
 
         model.addAttribute("userName", userName);
         model.addAttribute("conto", conto);
+
         return "crediti.html";
     }
 }
