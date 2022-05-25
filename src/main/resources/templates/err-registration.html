@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Thymeleaf dependency -->
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+>
 <head> 
 	<title>BiBixTE</title>
 
@@ -28,23 +28,14 @@
 		</ul>
 
 		<br>
-
-		<!-- Display user's count-->
-
-		<h3 class = "normal-text" th:text="*{conto}"></h3>
-
-		<!-- Display username -->
-		<!-- logout if presed -->
-
-		<div class = "ct">
-			<li><a href="/logout" class="button" th:text="*{userName}"></a></li>
-		</div>
+	</div>
 	
 	<div class = "hero">
 		<div class = "hero-content">
 			<p class = "mid-text" style = " color: #EA0028 ; ">Error:</p>
 			<h1 class = "big-text">User already</h1>
 			<h1 class = "big-text">registered.</h1>
+			<h1 class = "big-text"><a href="/registration">Retry.</a></h1>
 		</div>
 	</div>
 
