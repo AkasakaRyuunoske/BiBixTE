@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //            "/activate/*"
 //    };
 
-    private static final  String[] UN_ACCESSIBLE_URLS_BY_NOT_AUTHENTICATED_USERS = {
+    private static final  String[] INACCESSIBLE_URLS_BY_NOT_AUTHENTICATED_USERS = {
             "/",
             "/greeting",
             "/crediti",
@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/acquista/**",
             "/acquista/***",
             "/acquista/*/*/*",
+            "/clienti/*"
     };
 
     @Bean
@@ -82,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll()
 //                .antMatchers("/admin")
 //                .hasAuthority("AKASAKA")
-                .antMatchers(UN_ACCESSIBLE_URLS_BY_NOT_AUTHENTICATED_USERS)
+                .antMatchers(INACCESSIBLE_URLS_BY_NOT_AUTHENTICATED_USERS)
                 .authenticated()
                 .and()
                 .formLogin()
