@@ -24,13 +24,18 @@
 			</li>
 
 			<li>
-				<a href="">Single</a>
+				<a href="/prodotti">Products</a>
 			</li>
 
 			<li>
-				<a href="/credits">Contact</a>
+				<a href="/crediti">Contact</a>
 			</li>
 		</ul>
+	<br>
+
+	<!-- Display user's count-->
+
+	<h3 class = "normal-text" th:text="*{conto}"></h3>
 
 		<div class = "ct">
 			<li><a href="/logout" class="button" th:text="*{userName}"></a></li>
@@ -48,11 +53,11 @@
 			<h1 class = "big-text">
 				<div th:text="*{marca}" th:remove="tag"></div>
 			</h1>
-			<p class = "mid-text">In quantiti of <div th:text="*{quantita}" th:remove="tag"></div>.</p>
-			<p class = "mid-text">for <div th:text="*{importo}" th:remove="tag"></div>?</p>
+			<p class = "mid-text">In quantity of <div th:text="*{quantita}" th:remove="tag"></div>.</p>
+			<p class = "mid-text">for <div th:text="*{importo}" th:remove="tag"></div>€?</p>
 			<br>
-			<a href="/">Nnnn yeaszzzz.</a>
-			<a href="/prodotti">No.</a>
+			<a class = "mid-text" href="/">Nnnn yeaszzzz.</a>
+			<a class = "mid-text" href="/prodotti">No.</a>
 		</div>
 	</div>
 
