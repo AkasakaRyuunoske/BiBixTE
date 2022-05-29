@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
@@ -40,13 +39,20 @@ public class AcquistiController {
                                    @PathVariable String nome_bibita,
                                    @PathVariable double importo,
                                    @PathVariable int quantita){
+
         String userName = CustomUserDetails.clienti.getUserName();
-        Long id_cliente = clientiRepository.findByUserName(userName).getId_cliente();
+        String conto_to_display = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
+        Clienti cliente = clientiRepository.findByUserName(userName);
+
+        Double conto = cliente.getConto();
+
+        Acquisti acquisti;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String data_acquisto = dateTimeFormatter.format(LocalDateTime.now());
 
         if (quantita == 0){
             log.info("No pepsi? :(");
-            model.addAttribute("NoProductSelectedError",
-                    "Nessun prodotto selezionato.");
             return "err-product";
         }
 
@@ -60,26 +66,20 @@ public class AcquistiController {
         model.addAttribute("quantita",quantita);
         model.addAttribute("importo", importo);
         model.addAttribute("userName", userName);
+        model.addAttribute("conto", conto_to_display);
 
         model.addAttribute("background_image", background);
 
         try {
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String data_acquisto = dateTimeFormatter.format(LocalDateTime.now());
-
-            Acquisti acquisti = new Acquisti(
-                    data_acquisto,
-                    importo,
-                    quantita,
-                    acquisti_descrizione,
-                    bibita.getId_bibita(),
-                    id_cliente
-                    );
-
-            Clienti cliente = clientiRepository.findByUserName(userName);
-            Double conto = cliente.getConto();
-
             if (conto > importo) {
+                acquisti = new Acquisti(
+                        data_acquisto,
+                        importo,
+                        quantita,
+                        acquisti_descrizione,
+                        bibita,
+                        cliente
+                        );
 
                 clientiServiceImp.decreaseConto(importo);
 
@@ -112,7 +112,7 @@ public class AcquistiController {
         log.info("=====================================");
 
         log.info("Prodotto: " + nome_bibita);
-        log.info("time: " + LocalTime.now().toString());
+        log.info("time: " + data_acquisto);
         log.info("importo: " + importo);
         log.info("quantita: " + quantita);
         log.info("userName: " + userName);
