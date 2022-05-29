@@ -60,8 +60,6 @@ public class ClientiServiceImp implements ClientiService{
                                         Double importo,
                                         int quantita_bibite_acquistate,
                                         String data_acquisto) throws MessagingException {
-        //if clienti email is empty we can't send him any mails
-        if (!clienti.getEmail().isEmpty()){
 
             Corrieri corriere = corrieriRepository.findByNome("Paolo");
             String marca_bibita = bibita.getMarca();
@@ -85,13 +83,9 @@ public class ClientiServiceImp implements ClientiService{
                             + "Quantita di bibite acquistate:" + quantita_bibite_acquistate + "\n"
                             + "Marca di bibita acquistata: " + marca_bibita + "\n"
                             + "Importo totale da pagare: " + importo + "\n")
-                            + "Data acquisto: " + data_acquisto;
+                    + "Data acquisto: " + data_acquisto;
 
             mailSenderService.send(clienti.getEmail(), "Detagli sull Acquisto", theDyingMessage);
-
-        } else {
-            log.trace("Client mail is empty");
-        }
     }
 
     @Override
