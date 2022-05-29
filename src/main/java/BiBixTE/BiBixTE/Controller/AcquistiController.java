@@ -91,8 +91,8 @@ public class AcquistiController {
                 log.info("importo" + importo);
                 log.info("acquisti" + acquisti);
 
-
-                clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita);
+                    //todo Turn On before deploy
+                clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita, data_acquisto);
 
             } else {
                 return "err-general";
