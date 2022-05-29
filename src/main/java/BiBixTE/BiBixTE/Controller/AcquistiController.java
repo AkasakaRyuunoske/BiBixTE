@@ -52,13 +52,16 @@ public class AcquistiController {
 
         Bibite bibita = bibiteRepository.findByMarca(nome_bibita);
         String acquisti_descrizione = "Prodotti acquistati: " + bibita.getMarca();
+        String background = "/" + bibita.getImagine();
 
-        model.addAttribute("marca", nome_bibita);
+        model.addAttribute("marca", bibita.getMarca());
         model.addAttribute("descrizione", bibita.getDescrizione());
         model.addAttribute("capacita", bibita.getCapacita());
         model.addAttribute("quantita",quantita);
         model.addAttribute("importo", importo);
         model.addAttribute("userName", userName);
+
+        model.addAttribute("background_image", background);
 
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -92,7 +95,7 @@ public class AcquistiController {
                 log.info("acquisti" + acquisti);
 
             } else {
-                return "err-general";
+                return "err-balance";
             }
 
             if (!cliente.getEmail().isEmpty()) {
@@ -124,7 +127,7 @@ public class AcquistiController {
 
         log.info("=====================================");
 
-        return "acquisti";
+        return "confirm";
     }
 
     @PostMapping("/acquisti")
