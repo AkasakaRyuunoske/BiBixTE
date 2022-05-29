@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Slf4j
 @Controller
@@ -59,8 +61,11 @@ public class AcquistiController {
         model.addAttribute("userName", userName);
 
         try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String data_acquisto = dtf.format(LocalDateTime.now());
+
             Acquisti acquisti = new Acquisti(
-                    LocalTime.now().toString(),
+                    data_acquisto,
                     importo,
                     quantita,
                     acquisti_descrizione,
@@ -70,6 +75,7 @@ public class AcquistiController {
 
             Clienti cliente = clientiRepository.findByUserName(userName);
             Double conto = cliente.getConto();
+
             if (conto > importo) {
 
                 clientiServiceImp.decreaseConto(importo);
@@ -84,6 +90,7 @@ public class AcquistiController {
                 log.info("bibita" + acquisti);
                 log.info("importo" + importo);
                 log.info("acquisti" + acquisti);
+
 
                 clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita);
 
