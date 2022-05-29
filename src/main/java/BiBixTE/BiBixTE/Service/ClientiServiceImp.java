@@ -54,8 +54,13 @@ public class ClientiServiceImp implements ClientiService{
     }
 
     @Override
-    public void sendConfirmAcquistoMail(Clienti clienti, Bibite bibita, Acquisti acquisti, Double importo, int quantita_bibite_acquistate) throws MessagingException {
-        log.info("is called");
+    public void sendConfirmAcquistoMail(Clienti clienti,
+                                        Bibite bibita,
+                                        Acquisti acquisti,
+                                        Double importo,
+                                        int quantita_bibite_acquistate,
+                                        String data_acquisto) throws MessagingException {
+        //if clienti email is empty we can't send him any mails
         if (!clienti.getEmail().isEmpty()){
 
             Corrieri corriere = corrieriRepository.findByNome("Paolo");
@@ -71,7 +76,7 @@ public class ClientiServiceImp implements ClientiService{
             String theDyingMessage = String.format("Ciao, %s \n"
                             + "Grazie per il suo acquisto sull sito: https://bibixte.herokuapp.com/\n"
                             + "Il suo acquisto vera consegnato dall corriere:%s\n"
-                            + "",
+                            + " ",
                             clienti.getUserName(),
                             corriere.getNome()
                             + " "
@@ -79,9 +84,13 @@ public class ClientiServiceImp implements ClientiService{
                             + "Detagli sull acquisto effetuato:\n"
                             + "Quantita di bibite acquistate:" + quantita_bibite_acquistate + "\n"
                             + "Marca di bibita acquistata: " + marca_bibita + "\n"
-                            + "Importo totale da pagare: " + importo);
+                            + "Importo totale da pagare: " + importo + "\n")
+                            + "Data acquisto: " + data_acquisto;
 
             mailSenderService.send(clienti.getEmail(), "Detagli sull Acquisto", theDyingMessage);
+
+        } else {
+            log.trace("Client mail is empty");
         }
     }
 
@@ -92,7 +101,7 @@ public class ClientiServiceImp implements ClientiService{
         clienti.setCodiceDiAttivazione("ACTIVATED");
         clienti.setConto(50.00);
         clientiRepository.save(clienti);
-        log.info("CLient activated! " + clienti.getUserName());
+        log.info("Client activated! " + clienti.getUserName());
         return true;
     }
 
