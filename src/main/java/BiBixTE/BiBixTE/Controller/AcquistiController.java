@@ -61,8 +61,8 @@ public class AcquistiController {
         model.addAttribute("userName", userName);
 
         try {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String data_acquisto = dtf.format(LocalDateTime.now());
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String data_acquisto = dateTimeFormatter.format(LocalDateTime.now());
 
             Acquisti acquisti = new Acquisti(
                     data_acquisto,
@@ -91,15 +91,18 @@ public class AcquistiController {
                 log.info("importo" + importo);
                 log.info("acquisti" + acquisti);
 
-                    //todo Turn On before deploy
+            } else {
+                return "err-general";
+            }
+
+            if (!cliente.getEmail().isEmpty()) {
                 clientiServiceImp.sendConfirmAcquistoMail(cliente, bibita, acquisti, importo, quantita, data_acquisto);
 
             } else {
                 return "err-general";
             }
 
-        }catch (Exception exception){
-
+        } catch (Exception exception) {
             return "err-general";
         }
 
