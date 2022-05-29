@@ -55,14 +55,12 @@ public class Acquisti implements Serializable {
         this.descrizione = descrizione;
     }
 
-    public Acquisti(String data_aquisto, double importo, int quantita, String descrizione, Long id_bibita, Long id_cliente) {
+    public Acquisti(String data_aquisto, double importo, int quantita, String descrizione, Bibite id_bibita, Clienti cliente) {
         this.data_aquisto = data_aquisto;
         this.importo = importo;
         this.stock = quantita;
         this.descrizione = descrizione;
-//        this.id_cliente_fk = id_cliente;
-//        this.id_bibita_fk = id_bibita;
-
-        log.info("Acquisto created!");
+        setBibite(id_bibita);
+        setClienti(cliente);
     }
 }
