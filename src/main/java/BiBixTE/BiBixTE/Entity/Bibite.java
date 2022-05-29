@@ -39,4 +39,7 @@ public class Bibite {
 
     @Column(name = "costo", nullable = false)
     private Double costo;
+
+    @Column(name = "imagine", nullable = true)
+    private String imagine;
 }
