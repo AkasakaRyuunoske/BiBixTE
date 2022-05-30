@@ -2,6 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Dependencies used in few word are:
+		1: Java 11 (corretto-11.0.15);
+		2: Spring Boot 2.6.6;
+		2.1: Spring Boot Web
+		2.2: Spring Boot Test
+		2.3: Spring Boot Dev Tools
+		2.4: Thymeleaf (spring boot starter thymeleaf)
+		2.5: Spring Boot JPA
+		2.6: Spring Boot Validation
+		2.7: Spring Boot Security
+		2.8: Spring Boot Mail
+		3: Mysql Connector;
+		4: Lombok;
+		5: Maven Compiler 1.8
+	-->
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
