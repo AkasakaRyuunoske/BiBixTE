@@ -11,7 +11,7 @@ import javax.mail.MessagingException;
 public interface ClientiService {
     void sendConfirmMail(Clienti clienti) throws MessagingException;
 
-    void sendConfirmAcquistoMail(Clienti clienti,
+    void sendConfirmAcquistoMail(boolean DO_SEND_MAILS, Clienti clienti,
                                  Bibite bibite,
                                  Acquisti acquisti,
                                  Double importo,
