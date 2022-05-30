@@ -1,0 +1,217 @@
+/*base font style*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing:  border-box;
+}
+
+body{
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+}
+
+a{text-decoration: none;}
+
+h1,h2,h3,h4,h5,p {color: #0f87; padding-botton: 30px;}
+
+/*  font classes */
+
+.big-text{font-size: 70px; font-weight: 900;}
+.mid-text{font-size: 40px; font-weight: 900;}
+.normal-text{font-size: 20px; font-weight: 600;}
+.small-text{font-size: 14px;}
+.intro-text{text-trasform: uppercase; font-size: 20px; font-weight: bold;}
+
+.button{ padding: 15px 28px; background: #316bff ; color: #fff; display: inline-block; border-radius: 8px; font-size: 20px;}
+
+
+/*header */
+
+.header{
+	
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 30px;
+	display: flex;
+	max-width: 1000px;
+}
+
+/* footer */
+
+footer{
+	
+	background: linear-gradient(0deg, darkcyan, black);
+
+	height: auto;
+	width: 100%;
+	padding-top:40px ;
+	color: #fff;
+}
+
+.footer-content{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.links p{
+	color: #fff;
+}
+
+
+/*menu*/
+
+.menu{
+	width: 100%;
+}
+
+.menu li{display: inline-block;}
+.menu li a{color: white; padding: 15px; display: block;}
+
+/* index*/
+
+.hero{
+	height: 700px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background:linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(back-pepsi.jpg) no-repeat center center;
+	background-size: cover;
+
+}
+
+
+.hero-content{
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+.hero-content h1,
+.hero-content p{ color: #fff; }
+
+
+/* form syle */
+
+.form{
+	height: 700px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background: linear-gradient(0deg, rgba(0,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(back-ghiaccio.jpg) no-repeat center center;
+	background-size: cover;
+
+}
+
+.form-content{
+	box-sizing: border-box;
+	height: 300px;
+	width: 100%;
+	max-width: 1000px;
+	margin: auto auto;
+	padding: 30px;
+}
+
+
+fieldset {
+	text-align: center;
+	box-sizing: border-box;
+	width: 100%;
+	margin: : 2px o;
+	padding:  1em 2em;
+	border:  solid 5px #ccc;
+	border-radius: 10px;
+	min-width: 200px;
+	max-width: 1500px;
+}
+
+legend {
+	text-align: center;
+	font-size:  1.25em;
+	padding: .25 em;
+	color: #999;
+}
+
+label{
+	color: #316bff;
+	display: block;
+	margin-top: 1em;
+}
+
+input {
+	border-radius: 2px;
+	padding: 0.5em;
+	border:  solid 2px #000;
+	width: 15em;
+}
+
+input[type = "submit"]{
+	padding:  .5em 1em;
+	border-radius: 6px;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+input[type = "submit"]:hover{
+	background: #000;
+	color: fff;
+	border: solid 2px;
+
+}
+
+
+/* products page */
+.product{
+	height: 700px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background: linear-gradient(0deg, rgba(0,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(
+		back-ghiaccio.jpg) no-repeat center center;
+	background-size: cover;
+	}
+
+	.grid-container {
+
+		position: relative;
+		left: 450px;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+column-gap: 50px;
+row-gap: 50px;
+  padding: 10px;
+}
+
+.grid-item {
+ 
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.product-button{
+	padding: ; background: #316bff ; color: #fff; display: inline-block; border-radius: 8px; font-size: 20px; cursor: pointer;
+}
+
+#p1{left: 200px; top: 100px; } #p2{ left:600px; top:100px; } #p3{} #p4{}
+
+/*pudding of elements */
+
+*,
+*:before,
+*:after{
+	-webkit-box-sizing: border-box;
+		-noz-box-sizing: border-box;
+			box-sizing: border-box;
+}
