@@ -54,38 +54,39 @@ public class ClientiServiceImp implements ClientiService{
     }
 
     @Override
-    public void sendConfirmAcquistoMail(Clienti clienti,
+    public void sendConfirmAcquistoMail(boolean DO_SEND_MAILS, Clienti clienti,
                                         Bibite bibita,
                                         Acquisti acquisti,
                                         Double importo,
                                         int quantita_bibite_acquistate,
                                         String data_acquisto) throws MessagingException {
+            if (DO_SEND_MAILS) {
+                Corrieri corriere = corrieriRepository.findByNome("Paolo");
+                String marca_bibita = bibita.getMarca();
 
-            Corrieri corriere = corrieriRepository.findByNome("Paolo");
-            String marca_bibita = bibita.getMarca();
+                log.info("=====================================");
+                log.info("Clienti service imp was called");
+                log.info("Email is: " + clienti.getEmail());
+                log.info("User name is: " + clienti.getUserName());
+                log.info("Code is: " + clienti.getCodiceDiAttivazione());
+                log.info("=====================================");
 
-            log.info("=====================================");
-            log.info("Clienti service imp was called");
-            log.info("Email is: " + clienti.getEmail());
-            log.info("User name is: " + clienti.getUserName());
-            log.info("Code is: " + clienti.getCodiceDiAttivazione());
-            log.info("=====================================");
+                String theDyingMessage = String.format("Ciao, %s \n"
+                                + "Grazie per il suo acquisto sull sito: https://bibixte.herokuapp.com/\n"
+                                + "Il suo acquisto vera consegnato dall corriere:%s\n"
+                                + " ",
+                        clienti.getUserName(),
+                        corriere.getNome()
+                                + " "
+                                + corriere.getCognome() + "\n"
+                                + "Detagli sull acquisto effetuato:\n"
+                                + "Quantita di bibite acquistate:" + quantita_bibite_acquistate + "\n"
+                                + "Marca di bibita acquistata: " + marca_bibita + "\n"
+                                + "Importo totale da pagare: " + importo + "\n")
+                        + "Data acquisto: " + data_acquisto;
 
-            String theDyingMessage = String.format("Ciao, %s \n"
-                            + "Grazie per il suo acquisto sull sito: https://bibixte.herokuapp.com/\n"
-                            + "Il suo acquisto vera consegnato dall corriere:%s\n"
-                            + " ",
-                            clienti.getUserName(),
-                            corriere.getNome()
-                            + " "
-                            + corriere.getCognome() + "\n"
-                            + "Detagli sull acquisto effetuato:\n"
-                            + "Quantita di bibite acquistate:" + quantita_bibite_acquistate + "\n"
-                            + "Marca di bibita acquistata: " + marca_bibita + "\n"
-                            + "Importo totale da pagare: " + importo + "\n")
-                    + "Data acquisto: " + data_acquisto;
-
-            mailSenderService.send(clienti.getEmail(), "Detagli sull Acquisto", theDyingMessage);
+                mailSenderService.send(clienti.getEmail(), "Detagli sull Acquisto", theDyingMessage);
+            }
     }
 
     @Override
