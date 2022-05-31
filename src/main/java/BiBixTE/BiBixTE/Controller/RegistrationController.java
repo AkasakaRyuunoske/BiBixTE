@@ -37,7 +37,7 @@ public class RegistrationController {
         Clienti clienti = clientiRepository.findByUserName(formData.getUserName());
 
         if (clienti != null){
-            return "err-registration";
+            return "Error_Templates/err-registration";
         }
 
         formData.setCodiceDiAttivazione(UUID.randomUUID().toString());
