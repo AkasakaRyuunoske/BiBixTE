@@ -41,7 +41,11 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getUsername() {
 //        log.info("Username: " + clienti.getUserName());
-        return clienti.getUserName();
+        if (clienti == null){
+            return "unregistered";
+        } else {
+            return clienti.getUserName();
+        }
     }
 
     // are not used but must return true in order to continue work
