@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Contains all service logic methods that are used from @AcquistiController.
+ * Contains all service logic methods that are used by @AcquistiController.
  *
  *
  * */
@@ -61,7 +61,8 @@ public class AcquistiServiceImp implements AcquistiService{
                                 String nome_bibita,
                                 Clienti cliente,
                                 String conto_to_display) {
-        
+
+
         final boolean DO_SEND_MAILS = true;
 
         // object is created to be used after, it must be seen for all method context
@@ -81,7 +82,7 @@ public class AcquistiServiceImp implements AcquistiService{
         // returns error page if quantita(quantity) is equal to 0 (no products selected)
         if (quantita == 0) {
             log.info("No pepsi? :(");
-            return "err-product";
+            return "Error_Templates/err-product";
         }
 
         // as long as purchase of more than one product is not possible, this works fine
@@ -117,18 +118,18 @@ public class AcquistiServiceImp implements AcquistiService{
                 acquistiRepository.save(acquisti);
             } else {
                 // if client's count is less then products cost this page is returned
-                return "err-balance";
+                return "Error_Templates/err-balance";
             }
             if (!cliente.getEmail().isEmpty()) {
                 clientiServiceImp.sendConfirmAcquistoMail(DO_SEND_MAILS, cliente, bibita,
                         acquisti, importo,
                         quantita, data_acquisto);
             } else {
-                return "err-general";
+                return "Error_Templates/err-general";
             }
 
         } catch (Exception exception) {
-            return "err-general";
+            return "Error_Templates/err-general";
         }
 
         log.info("=====================================");
