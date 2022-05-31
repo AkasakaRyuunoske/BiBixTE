@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Dependencies used in few word are:
-		1: Java 11 (corretto-11.0.15);
-		2: Spring Boot 2.6.6;
+		1: Java 11 (corretto-11.0.15)
+		2: Spring Boot 2.6.6
 		2.1: Spring Boot Web
 		2.2: Spring Boot Test
 		2.3: Spring Boot Dev Tools
@@ -14,8 +14,8 @@
 		2.6: Spring Boot Validation
 		2.7: Spring Boot Security
 		2.8: Spring Boot Mail
-		3: Mysql Connector;
-		4: Lombok;
+		3: Mysql Connector
+		4: Lombok
 		5: Maven Compiler 1.8
 	-->
 
@@ -90,6 +90,20 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-jdbc</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
