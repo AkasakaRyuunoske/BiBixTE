@@ -2,6 +2,7 @@ package BiBixTE.BiBixTE.Repository;
 
 import BiBixTE.BiBixTE.Entity.Clienti;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -11,4 +12,8 @@ public interface ClientiRepository extends JpaRepository<Clienti, Long> {
     Clienti findByCodiceDiAttivazione(String code);
 
     Clienti findBySessionID(String sessionID);
+
+    @Query(value = "SELECT PRIMARY_ID FROM spring_session s where s.SESSION_ID = :sessionID",
+            nativeQuery = true)
+    String getSessionPrimaryIDBySessionID(String sessionID);
 }

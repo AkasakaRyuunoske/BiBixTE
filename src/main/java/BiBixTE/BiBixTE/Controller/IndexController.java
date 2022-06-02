@@ -28,7 +28,6 @@ public class IndexController {
     @Autowired
     ClientiDetailsService clientiDetailsService;
 
-
     @GetMapping("/")
     public String index(Model model, HttpServletRequest request){
 
@@ -36,15 +35,21 @@ public class IndexController {
         String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
         Clienti clienti = clientiRepository.findByUserName(userName);
 
+        String currentSession = request.getSession().getId();
+
         if (clienti.getSessionID() == null){
-            clienti.setSessionID(request.getSession().getId());
+
+            log.info("currentSession : " + currentSession);
+            log.info("clientiRepository.getSessionPrimaryIDBySessionID(currentSession)" + clientiRepository.getSessionPrimaryIDBySessionID(currentSession));
+            clienti.setSessionID(clientiRepository.getSessionPrimaryIDBySessionID(currentSession));
+
             clientiRepository.save(clienti);
         }
 
         log.info("userName: " + userName);
         log.info("conto: " + conto);
         log.info("Session getSession" + request.getSession().getId());
-        String  sessionID = request.getSession().getId();
+        String  sessionID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
         clienti = clientiRepository.findBySessionID(sessionID);
         String user_name_to_display = clienti.getUserName();
 
