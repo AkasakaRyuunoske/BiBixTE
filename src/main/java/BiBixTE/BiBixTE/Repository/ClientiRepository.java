@@ -9,4 +9,6 @@ public interface ClientiRepository extends JpaRepository<Clienti, Long> {
     Clienti findByUserName(String userName);
 
     Clienti findByCodiceDiAttivazione(String code);
+
+    Clienti findBySessionID(String sessionID);
 }
