@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Slf4j
 @Controller
 public class IndexController {
@@ -26,17 +28,29 @@ public class IndexController {
     @Autowired
     ClientiDetailsService clientiDetailsService;
 
+
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, HttpServletRequest request){
 
         String userName = CustomUserDetails.clienti.getUserName();
         String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
+        Clienti clienti = clientiRepository.findByUserName(userName);
 
-        model.addAttribute("userName", userName);
-        model.addAttribute("conto", conto);
+        if (clienti.getSessionID() == null){
+            clienti.setSessionID(request.getSession().getId());
+            clientiRepository.save(clienti);
+        }
 
         log.info("userName: " + userName);
         log.info("conto: " + conto);
+        log.info("Session getSession" + request.getSession().getId());
+        String  sessionID = request.getSession().getId();
+        clienti = clientiRepository.findBySessionID(sessionID);
+        String user_name_to_display = clienti.getUserName();
+
+        model.addAttribute("userName", user_name_to_display);
+        model.addAttribute("conto", conto);
+
 
         return "index.html";
     }
@@ -51,13 +65,15 @@ public class IndexController {
     }
 
     @GetMapping("/crediti")
-    public String crediti(Model model){
+    public String crediti(Model model, HttpServletRequest request){
 
         String userName = CustomUserDetails.clienti.getUserName();
         String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
 
         model.addAttribute("userName", userName);
         model.addAttribute("conto", conto);
+
+        log.info("Session getSession" + request.getSession().getId());
 
         return "crediti.html";
     }
