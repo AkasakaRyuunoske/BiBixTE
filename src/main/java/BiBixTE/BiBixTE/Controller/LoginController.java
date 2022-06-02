@@ -13,12 +13,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(@ModelAttribute Clienti clienti, Model model){
-        model.addAttribute("cliente", clienti);
-        if (clienti != null){
-            log.info("Clienti getUserName: " + clienti.getUserName());
-            log.info("Clienti getPassword: " + clienti.getPassword());
-            log.info("Clienti getEmail: " + clienti.getEmail());
-        }
+
         return "login";
     }
 }
