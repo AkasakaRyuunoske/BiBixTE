@@ -41,7 +41,10 @@ public class Clienti {
     private String codiceDiAttivazione;
 
     @Column(name = "ruolo", nullable = false)
-    private String ruolo = "CLIENTE"; //admin
+    private String ruolo = "CLIENTE";
+
+    @Column(name = "sessionID", nullable = true)
+    private String sessionID;
 
     //Will be used for registration
     public Clienti(String userName, String email, String password, String codiceDiAttivazione){
