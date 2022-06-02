@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @Slf4j
 public class ProdottiController {
@@ -16,7 +18,7 @@ public class ProdottiController {
     ClientiRepository clientiRepository;
 
     @GetMapping("/prodotti")
-    public String aquistiGet(Model model){
+    public String aquistiGet(Model model, HttpServletRequest request){
 
         String userName = CustomUserDetails.clienti.getUserName();
         String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
@@ -26,6 +28,7 @@ public class ProdottiController {
 
         log.info("userName: " + userName);
         log.info("conto: " + conto);
+        log.info("Session getSession" + request.getSession().getId());
 
         return "prodotti";
     }
