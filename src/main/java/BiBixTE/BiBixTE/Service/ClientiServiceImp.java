@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Service
@@ -122,5 +123,14 @@ public class ClientiServiceImp implements ClientiService{
         return conto_aggiornato;
     }
 
+    @Override
+    public Clienti getClientBySession(HttpServletRequest httpServletRequest) {
 
+        String currentSession = httpServletRequest.getSession().getId();
+        final String SESSION_PRIMARY_ID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
+
+        Clienti clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
+
+        return clienti;
+    }
 }
