@@ -4,6 +4,8 @@ import BiBixTE.BiBixTE.Entity.Clienti;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public interface AcquistiService {
 
@@ -17,7 +19,9 @@ public interface AcquistiService {
      * */
 
     String processAcquisto(int quantita, Double conto,
-                         Double importo, Model model,
-                         String nome_bibita, Clienti cliente,
-                         String conto_to_display);
+                           Double importo, Model model,
+                           String nome_bibita, Clienti cliente,
+                           String conto_to_display,
+                           String userName,
+                           HttpServletRequest httpServletRequest);
 }
