@@ -22,7 +22,7 @@ public interface ClientiService {
 
     boolean activateUser(String code);
 
-    Double decreaseConto(Double importo);
+    Double decreaseConto(Clienti clienti, Double importo);
 
     Clienti getClientBySession(HttpServletRequest httpServletRequest);
 }
