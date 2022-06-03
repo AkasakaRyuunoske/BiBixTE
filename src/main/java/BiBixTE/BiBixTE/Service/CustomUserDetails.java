@@ -14,16 +14,10 @@ import java.util.Collections;
 public class CustomUserDetails implements UserDetails {
 
     public static Clienti clienti;
-    // maybe repeat every field of clienti @entity
-    // but here is not needed
 
     public CustomUserDetails(Clienti clienti) {
         //super();
         this.clienti = clienti;
-//        log.info("CustomUserDetails constructor getUserName: " + clienti.getUserName());
-//        log.info("CustomUserDetails constructor getPassword: " + clienti.getPassword());
-//        log.info("CustomUserDetails constructor getEmail: " + clienti.getEmail());
-//        log.info("CustomUserDetails constructor getId_cliente: " + clienti.getId_cliente());
     }
 
     @Override
@@ -33,14 +27,15 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-//        log.info("Password: " + clienti.getPassword());
         return clienti.getPassword();
     }
 
 
     @Override
     public String getUsername() {
-//        log.info("Username: " + clienti.getUserName());
+        // The check is here for not authenticated users, if one does try
+        // to do anything exception is thrown
+
         if (clienti == null){
             return "unregistered";
         } else {
@@ -48,7 +43,8 @@ public class CustomUserDetails implements UserDetails {
         }
     }
 
-    // are not used but must return true in order to continue work
+    // Must be here because are part of the implemented interface, even if are not used properly
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
