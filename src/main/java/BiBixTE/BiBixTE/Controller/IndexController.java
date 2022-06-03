@@ -3,6 +3,7 @@ package BiBixTE.BiBixTE.Controller;
 import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
 import BiBixTE.BiBixTE.Service.ClientiDetailsService;
+import BiBixTE.BiBixTE.Service.ClientiServiceImp;
 import BiBixTE.BiBixTE.Service.CustomUserDetails;
 import BiBixTE.BiBixTE.Service.MailSenderService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,8 @@ public class IndexController {
     PasswordEncoder passwordEncoder;
     @Autowired
     ClientiDetailsService clientiDetailsService;
+    @Autowired
+    ClientiServiceImp clientiServiceImp;
 
     /**
      *
@@ -72,15 +75,12 @@ public class IndexController {
 
             clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
 
-            conto = "Your count: " + clienti.getConto().toString() + "€";
-            user_name_to_display = clienti.getUserName();
-
         } else {
-            clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
-
-            user_name_to_display = clienti.getUserName();
-            conto = "Your count: " + clienti.getConto().toString() + "€";
+            clienti = clientiServiceImp.getClientBySession(request);
         }
+
+        conto = "Your count: " + clienti.getConto().toString() + "€";
+        user_name_to_display = clienti.getUserName();
 
         model.addAttribute("userName", user_name_to_display);
         model.addAttribute("conto", conto);
