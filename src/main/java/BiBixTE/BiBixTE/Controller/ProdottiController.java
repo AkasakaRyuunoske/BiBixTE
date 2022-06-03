@@ -1,7 +1,8 @@
 package BiBixTE.BiBixTE.Controller;
 
+import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
-import BiBixTE.BiBixTE.Service.CustomUserDetails;
+import BiBixTE.BiBixTE.Service.ClientiServiceImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,19 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 public class ProdottiController {
     @Autowired
     ClientiRepository clientiRepository;
+    @Autowired
+    ClientiServiceImp clientiServiceImp;
 
     @GetMapping("/prodotti")
-    public String aquistiGet(Model model, HttpServletRequest request){
+    public String aquistiGet(Model model, HttpServletRequest httpServletRequest){
 
-        String userName = CustomUserDetails.clienti.getUserName();
-        String conto = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
+        Clienti clienti = clientiServiceImp.getClientBySession(httpServletRequest);
+
+        String userName = clienti.getUserName();
+        String conto = "Your count: " + clienti.getConto().toString() + "€";
 
         model.addAttribute("userName", userName);
         model.addAttribute("conto", conto);
-
-        log.info("userName: " + userName);
-        log.info("conto: " + conto);
-        log.info("Session getSession" + request.getSession().getId());
 
         return "prodotti";
     }
