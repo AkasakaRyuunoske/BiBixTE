@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -55,20 +56,20 @@ public class AcquistiServiceImp implements AcquistiService{
      * */
 
     public String processAcquisto(int quantita,
-                                Double conto,
-                                Double importo,
-                                Model model,
-                                String nome_bibita,
-                                Clienti cliente,
-                                String conto_to_display) {
+                                  Double conto,
+                                  Double importo,
+                                  Model model,
+                                  String nome_bibita,
+                                  Clienti cliente,
+                                  String conto_to_display,
+                                  String userName,
+                                  HttpServletRequest httpServletRequest) {
 
 
         final boolean DO_SEND_MAILS = true;
 
         // object is created to be used after, it must be seen for all method context
         Acquisti acquisti;
-
-        String userName = CustomUserDetails.clienti.getUserName();
 
         // date formatter with european date pattern to save time when acquisto(purchase) was made
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -103,16 +104,10 @@ public class AcquistiServiceImp implements AcquistiService{
                         quantita,
                         acquisti_descrizione,
                         bibita,
-                        cliente
-                );
+                        cliente);
 
-                clientiServiceImp.decreaseConto(importo);
+                clientiServiceImp.decreaseConto(cliente, importo);
                 bibiteServiceImp.decreaseQuantity(quantita, bibita);
-
-                log.info("Cliente: " + cliente);
-                log.info("bibita: " + bibita);
-                log.info("importo: " + importo);
-                log.info("acquisti: " + acquisti);
 
                 bibiteRepository.save(bibita);
                 acquistiRepository.save(acquisti);
@@ -132,30 +127,13 @@ public class AcquistiServiceImp implements AcquistiService{
             return "Error_Templates/err-general";
         }
 
-        log.info("=====================================");
-
-        log.info("Prodotto: " + nome_bibita);
-        log.info("time: " + data_acquisto);
-        log.info("importo: " + importo);
-        log.info("quantita: " + quantita);
-
-        log.info("=====================================");
-
-        log.info("bibita getDescrizione: " + bibita.getDescrizione());
-        log.info("bibita getMarca: " + bibita.getMarca());
-        log.info("bibita getQuantita: " + bibita.getQuantita());
-        log.info("bibita getCapacita: " + bibita.getCapacita());
-        log.info("bibita getId_bibita: " + bibita.getId_bibita());
-
-        log.info("=====================================");
-
         model.addAttribute("marca", bibita.getMarca());
         model.addAttribute("descrizione", bibita.getDescrizione());
         model.addAttribute("capacita", bibita.getCapacita());
         model.addAttribute("quantita", quantita);
         model.addAttribute("importo", importo);
         model.addAttribute("background_image", background);
-
+        log.info("here is : " + clientiServiceImp.getClientBySession(httpServletRequest).getUserName());
         return "confirm";
     }
 }
