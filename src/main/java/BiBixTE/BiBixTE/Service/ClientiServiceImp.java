@@ -102,34 +102,33 @@ public class ClientiServiceImp implements ClientiService{
     }
 
     @Override
-    public Double decreaseConto(Double importo) {
-        String userName = CustomUserDetails.clienti.getUserName();
-        Clienti clienti = clientiRepository.findByUserName(userName);
+    public Double decreaseConto(Clienti clienti, Double importo) {
+
         Double conto = clienti.getConto();
-
-        log.info(conto + " pre conto aggiornato");
-
         Double conto_aggiornato = conto - importo;
-
-        log.info(conto + " post conto aggiornato");
-        log.info("conto aggiornato: " + conto_aggiornato);
-
         clienti.setConto(conto_aggiornato);
 
-        log.info(clienti.getUserName());
         clientiRepository.save(clienti);
-        log.info(conto + "post set conto");
 
         return conto_aggiornato;
     }
+
+    /**
+     *
+     * Is used in order to obtain unique user by his unique session.
+     *
+     * */
 
     @Override
     public Clienti getClientBySession(HttpServletRequest httpServletRequest) {
 
         String currentSession = httpServletRequest.getSession().getId();
-        final String SESSION_PRIMARY_ID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
-
+        String SESSION_PRIMARY_ID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
         Clienti clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
+
+        log.info("was called by: " + clienti.getUserName());
+        log.info("he's session is: " + clienti.getSessionID());
+        log.info("Using same method i find: " + clientiRepository.findBySessionID(SESSION_PRIMARY_ID).getUserName());
 
         return clienti;
     }
