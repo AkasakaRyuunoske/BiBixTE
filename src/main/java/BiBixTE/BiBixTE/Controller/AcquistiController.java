@@ -6,7 +6,6 @@ import BiBixTE.BiBixTE.Repository.BibiteRepository;
 import BiBixTE.BiBixTE.Repository.ClientiRepository;
 import BiBixTE.BiBixTE.Service.AcquistiServiceImp;
 import BiBixTE.BiBixTE.Service.ClientiServiceImp;
-import BiBixTE.BiBixTE.Service.CustomUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Controller
@@ -36,18 +37,21 @@ public class AcquistiController {
     public String aquistiBibitaGET(Model model,
                                    @PathVariable String nome_bibita,
                                    @PathVariable double importo,
-                                   @PathVariable int quantita){
+                                   @PathVariable int quantita,
+                                   HttpServletRequest httpServletRequest){
+        Clienti clienti = clientiServiceImp.getClientBySession(httpServletRequest);
 
-        String userName = CustomUserDetails.clienti.getUserName();
-        String conto_to_display = "Your count: " + clientiRepository.findByUserName(userName).getConto().toString() + "€";
-        Clienti cliente = clientiRepository.findByUserName(userName);
+        String conto_to_display = "Your count: " + clienti.getConto().toString() + "€";
+        String userName = clienti.getUserName();
 
-        Double conto = cliente.getConto();
+        Double conto = clienti.getConto();
 
-        return acquistiServiceImp.processAcquisto(quantita,
-                conto, importo,
-                model, nome_bibita,
-                cliente, conto_to_display);
+        return acquistiServiceImp.processAcquisto(
+                quantita, conto,
+                importo, model,
+                nome_bibita, clienti,
+                conto_to_display,
+                userName,  httpServletRequest);
     }
 
     @PostMapping("/acquisti")
