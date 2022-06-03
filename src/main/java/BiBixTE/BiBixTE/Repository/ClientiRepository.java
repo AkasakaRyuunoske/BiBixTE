@@ -13,6 +13,13 @@ public interface ClientiRepository extends JpaRepository<Clienti, Long> {
 
     Clienti findBySessionID(String sessionID);
 
+
+    /**
+     *
+     * Session management is here just because i cannot find any better suitable solution,
+     * so i made a custom one.
+     *
+     * */
     @Query(value = "SELECT PRIMARY_ID FROM spring_session s where s.SESSION_ID = :sessionID",
             nativeQuery = true)
     String getSessionPrimaryIDBySessionID(String sessionID);
