@@ -84,24 +84,21 @@ public class IndexController {
 
         model.addAttribute("userName", user_name_to_display);
         model.addAttribute("conto", conto);
-
+        log.info("here is : " + clientiServiceImp.getClientBySession(request).getUserName());
         return "index.html";
     }
 
     @GetMapping("/crediti")
     public String crediti(Model model, HttpServletRequest request){
 
-        String currentSession = request.getSession().getId();
-        final String SESSION_PRIMARY_ID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
-
-        Clienti clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
+        Clienti clienti = clientiServiceImp.getClientBySession(request);
 
         String user_name_to_display = clienti.getUserName();
         String conto = "Your count: " + clienti.getConto().toString() + "€";
 
         model.addAttribute("userName", user_name_to_display);
         model.addAttribute("conto", conto);
-
+        log.info("here is : " + clientiServiceImp.getClientBySession(request).getUserName());
         return "crediti.html";
     }
 }
