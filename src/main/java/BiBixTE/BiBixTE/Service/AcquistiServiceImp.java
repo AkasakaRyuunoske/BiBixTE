@@ -38,9 +38,6 @@ public class AcquistiServiceImp implements AcquistiService{
     @Autowired
     BibiteServiceImp    bibiteServiceImp;
 
-
-
-
     /**
      * The main method of this class is used to process each Acquisto(Purchase)
      * that comes from @AcquistiController, which receives parameters from the same.
@@ -61,27 +58,30 @@ public class AcquistiServiceImp implements AcquistiService{
      *
      * */
 
+    @Override
     public String processAcquisto(int quantita,
-                                  Double conto,
-                                  Double importo,
+                                  double importo,
                                   Model model,
                                   String nome_bibita,
-                                  Clienti cliente,
-                                  String conto_to_display,
-                                  String userName,
+                                  String indirizzo,
                                   HttpServletRequest httpServletRequest) {
 
-
-        final boolean DO_SEND_MAILS = true;
+        //todo turn true
+        final boolean DO_SEND_MAILS = false;
 
         // object is created to be used after, it must be seen for all method context
         Acquisti acquisti;
-
         Consegne consegne;
+        Clienti cliente;
 
         // date formatter with european date pattern to save time when acquisto(purchase) was made
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String data_acquisto = dateTimeFormatter.format(LocalDateTime.now());
+
+        cliente = clientiServiceImp.getClientBySession(httpServletRequest);
+        String userName = cliente.getUserName();
+        Double conto = cliente.getConto();
+        String conto_to_display = "Your count: " + conto.toString() + "€";
 
         // must be before any checks because returned pages are different,
         // so it's easier to add default info regardless page returned
@@ -117,10 +117,9 @@ public class AcquistiServiceImp implements AcquistiService{
                 clientiServiceImp.decreaseConto(cliente, importo);
                 bibiteServiceImp.decreaseQuantity(quantita, bibita);
 
-
                 Corrieri corrieri = corrieriRepository.findByNome("Paolo");
-                consegne = new Consegne("test address",
-                        " test address of arival",
+                consegne = new Consegne("Via Dante 16",
+                        indirizzo,
                         10,
                         cliente,
                         bibita,
@@ -131,6 +130,7 @@ public class AcquistiServiceImp implements AcquistiService{
                 acquistiRepository.save(acquisti);
 
                 model.addAttribute("background_image", background);
+
             } else {
                 // if client's count is less then products cost this page is returned
                 return "Error_Templates/err-balance";
