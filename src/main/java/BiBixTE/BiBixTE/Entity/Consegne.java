@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -34,16 +33,6 @@ public class Consegne {
     @Column(name = "tempo_previsto", nullable = true)
     private int tempo_previsto;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
-//    List<Clienti> clienti;
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_bibita_fk", referencedColumnName = "id_bibita")
-//    List<Bibite> bibite;
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_corriere_fk", referencedColumnName = "id_corriere")
-//    List<Corrieri> corrieri;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cliente_fk", referencedColumnName = "id_cliente")
     private Clienti clienti;
@@ -55,4 +44,13 @@ public class Consegne {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_corriere_fk", referencedColumnName = "id_corriere")
     private Corrieri corrieri;
+
+    public Consegne(String indirizzo_partenza, String indirizzo_arrivo, int tempo_previsto, Clienti cliente, Bibite bibita, Corrieri corrieri) {
+        this.indirizzo_partenza = indirizzo_partenza;
+        this.indirizzo_arrivo = indirizzo_arrivo;
+        this.tempo_previsto = tempo_previsto;
+        setClienti(cliente);
+        setBibite(bibita);
+        setCorrieri(corrieri);
+    }
 }
