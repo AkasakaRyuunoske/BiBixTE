@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,16 +45,12 @@ public class AcquistiController {
 
         Double conto = clienti.getConto();
 
+        // Method changes background of model too
         return acquistiServiceImp.processAcquisto(
                 quantita, conto,
                 importo, model,
                 nome_bibita, clienti,
                 conto_to_display,
                 userName,  httpServletRequest);
-    }
-
-    @PostMapping("/acquisti")
-    public String aquistiPOST(){
-        return "acquisti";
     }
 }
