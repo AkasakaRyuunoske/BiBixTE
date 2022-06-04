@@ -1,5 +1,6 @@
 package BiBixTE.BiBixTE.Controller;
 
+import BiBixTE.BiBixTE.Entity.Bibite;
 import BiBixTE.BiBixTE.Entity.Clienti;
 import BiBixTE.BiBixTE.Repository.AcquistiRepository;
 import BiBixTE.BiBixTE.Repository.BibiteRepository;
@@ -38,19 +39,43 @@ public class AcquistiController {
                                    @PathVariable double importo,
                                    @PathVariable int quantita,
                                    HttpServletRequest httpServletRequest){
-        Clienti clienti = clientiServiceImp.getClientBySession(httpServletRequest);
 
+        Clienti clienti = clientiServiceImp.getClientBySession(httpServletRequest);
+        Bibite bibita = bibiteRepository.findByMarca(nome_bibita);
+
+        // model data
         String conto_to_display = "Your count: " + clienti.getConto().toString() + "€";
         String userName = clienti.getUserName();
+        String background = "/" + bibita.getImagine();
 
-        Double conto = clienti.getConto();
+        if (quantita == 0) {
 
-        // Method changes background of model too
+            return "Error_Templates/err-product";
+
+        } else {
+
+            model.addAttribute("background_image", background);
+            model.addAttribute("conto", conto_to_display);
+            model.addAttribute("userName", userName);
+            model.addAttribute("marca", nome_bibita);
+        }
+
+        return "confirm";
+    }
+
+    @GetMapping("/acquista/{nome_bibita}/{importo}/{quantita}/{indirizzo}")
+    public String aquistiBibitaPOST(Model model,
+                                   @PathVariable String nome_bibita,
+                                   @PathVariable double importo,
+                                   @PathVariable int quantita,
+                                   @PathVariable String indirizzo,
+                                   HttpServletRequest httpServletRequest){
+        log.info("Orders received!");
         return acquistiServiceImp.processAcquisto(
-                quantita, conto,
+                quantita,
                 importo, model,
-                nome_bibita, clienti,
-                conto_to_display,
-                userName,  httpServletRequest);
+                nome_bibita,
+                indirizzo,
+                httpServletRequest);
     }
 }
