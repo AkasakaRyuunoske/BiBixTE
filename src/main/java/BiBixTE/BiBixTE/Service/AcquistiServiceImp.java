@@ -1,10 +1,10 @@
 package BiBixTE.BiBixTE.Service;
 
-import BiBixTE.BiBixTE.Entity.Acquisti;
-import BiBixTE.BiBixTE.Entity.Bibite;
-import BiBixTE.BiBixTE.Entity.Clienti;
+import BiBixTE.BiBixTE.Entity.*;
 import BiBixTE.BiBixTE.Repository.AcquistiRepository;
 import BiBixTE.BiBixTE.Repository.BibiteRepository;
+import BiBixTE.BiBixTE.Repository.ConsegneRepository;
+import BiBixTE.BiBixTE.Repository.CorrieriRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,15 +24,21 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class AcquistiServiceImp implements AcquistiService{
 
+    @Autowired
+    AcquistiRepository  acquistiRepository;
+    @Autowired
+    BibiteRepository    bibiteRepository;
+    @Autowired
+    ConsegneRepository  consegneRepository;
+    @Autowired
+    CorrieriRepository corrieriRepository;
 
     @Autowired
-    AcquistiRepository acquistiRepository;
+    ClientiServiceImp   clientiServiceImp;
     @Autowired
-    BibiteRepository bibiteRepository;
-    @Autowired
-    ClientiServiceImp clientiServiceImp;
-    @Autowired
-    BibiteServiceImp bibiteServiceImp;
+    BibiteServiceImp    bibiteServiceImp;
+
+
 
 
     /**
@@ -71,11 +77,13 @@ public class AcquistiServiceImp implements AcquistiService{
         // object is created to be used after, it must be seen for all method context
         Acquisti acquisti;
 
+        Consegne consegne;
+
         // date formatter with european date pattern to save time when acquisto(purchase) was made
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String data_acquisto = dateTimeFormatter.format(LocalDateTime.now());
 
-        // must be before any checks because pages returned are different,
+        // must be before any checks because returned pages are different,
         // so it's easier to add default info regardless page returned
         model.addAttribute("conto", conto_to_display);
         model.addAttribute("userName", userName);
@@ -109,8 +117,20 @@ public class AcquistiServiceImp implements AcquistiService{
                 clientiServiceImp.decreaseConto(cliente, importo);
                 bibiteServiceImp.decreaseQuantity(quantita, bibita);
 
+
+                Corrieri corrieri = corrieriRepository.findByNome("Paolo");
+                consegne = new Consegne("test address",
+                        " test address of arival",
+                        10,
+                        cliente,
+                        bibita,
+                        corrieri);
+
+                consegneRepository.save(consegne);
                 bibiteRepository.save(bibita);
                 acquistiRepository.save(acquisti);
+
+                model.addAttribute("background_image", background);
             } else {
                 // if client's count is less then products cost this page is returned
                 return "Error_Templates/err-balance";
@@ -122,18 +142,10 @@ public class AcquistiServiceImp implements AcquistiService{
             } else {
                 return "Error_Templates/err-general";
             }
-
         } catch (Exception exception) {
             return "Error_Templates/err-general";
         }
 
-        model.addAttribute("marca", bibita.getMarca());
-        model.addAttribute("descrizione", bibita.getDescrizione());
-        model.addAttribute("capacita", bibita.getCapacita());
-        model.addAttribute("quantita", quantita);
-        model.addAttribute("importo", importo);
-        model.addAttribute("background_image", background);
-        log.info("here is : " + clientiServiceImp.getClientBySession(httpServletRequest).getUserName());
         return "confirm";
     }
 }
