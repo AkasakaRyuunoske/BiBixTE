@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConsegneRepository extends JpaRepository<Consegne, Long> {
+
 }
