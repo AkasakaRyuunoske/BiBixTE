@@ -66,8 +66,8 @@ public class AcquistiServiceImp implements AcquistiService{
                                   String indirizzo,
                                   HttpServletRequest httpServletRequest) {
 
-        //todo turn true
-        final boolean DO_SEND_MAILS = false;
+
+        final boolean DO_SEND_MAILS = true;
 
         // object is created to be used after, it must be seen for all method context
         Acquisti acquisti;
