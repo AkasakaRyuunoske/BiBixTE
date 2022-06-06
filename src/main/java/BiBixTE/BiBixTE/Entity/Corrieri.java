@@ -31,9 +31,6 @@ public class Corrieri {
     @Column(name = "cognome", nullable = true)
     private String cognome;
 
-//    @Column(name = "data_di_nascita", nullable = true)
-//    private Date data_di_nascita;
-
     @Column(name = "telefono", nullable = true)
     private String telefono;
 }
