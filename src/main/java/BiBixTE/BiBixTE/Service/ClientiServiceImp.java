@@ -65,13 +65,6 @@ public class ClientiServiceImp implements ClientiService{
                 Corrieri corriere = corrieriRepository.findByNome("Paolo");
                 String marca_bibita = bibita.getMarca();
 
-                log.info("=====================================");
-                log.info("Clienti service imp was called");
-                log.info("Email is: " + clienti.getEmail());
-                log.info("User name is: " + clienti.getUserName());
-                log.info("Code is: " + clienti.getCodiceDiAttivazione());
-                log.info("=====================================");
-
                 String theDyingMessage = String.format("Ciao, %s \n"
                                 + "Grazie per il suo acquisto sull sito: https://bibixte.herokuapp.com/\n"
                                 + "Il suo acquisto vera consegnato dall corriere:%s\n"
@@ -97,7 +90,7 @@ public class ClientiServiceImp implements ClientiService{
         clienti.setCodiceDiAttivazione("ACTIVATED");
         clienti.setConto(50.00);
         clientiRepository.save(clienti);
-        log.info("Client activated! " + clienti.getUserName());
+
         return true;
     }
 
@@ -125,10 +118,6 @@ public class ClientiServiceImp implements ClientiService{
         String currentSession = httpServletRequest.getSession().getId();
         String SESSION_PRIMARY_ID = clientiRepository.getSessionPrimaryIDBySessionID(currentSession);
         Clienti clienti = clientiRepository.findBySessionID(SESSION_PRIMARY_ID);
-
-        log.info("was called by: " + clienti.getUserName());
-        log.info("he's session is: " + clienti.getSessionID());
-        log.info("Using same method i find: " + clientiRepository.findBySessionID(SESSION_PRIMARY_ID).getUserName());
 
         return clienti;
     }
