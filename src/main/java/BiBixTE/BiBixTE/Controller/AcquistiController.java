@@ -70,7 +70,6 @@ public class AcquistiController {
                                    @PathVariable int quantita,
                                    @PathVariable String indirizzo,
                                    HttpServletRequest httpServletRequest){
-        log.info("Orders received!");
         return acquistiServiceImp.processAcquisto(
                 quantita,
                 importo, model,
