@@ -30,11 +30,5 @@ public class MailSenderService {
 
         mailSender.send(The_Dying_Message);
 
-        log.info("==========================");
-        log.info("User mail: " + userMail);
-        log.info("Email to is: " + emailTo);
-        log.info("Subject is: " + subject);
-        log.info("Message is: " + message);
-        log.info("==========================");
     }
 }
