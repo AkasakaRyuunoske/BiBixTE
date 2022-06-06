@@ -130,6 +130,9 @@ public class AcquistiServiceImp implements AcquistiService{
                 acquistiRepository.save(acquisti);
 
                 model.addAttribute("background_image", background);
+                model.addAttribute("importo", importo);
+                model.addAttribute("quantita", quantita);
+                model.addAttribute("indirizzo", indirizzo);
 
             } else {
                 // if client's count is less then products cost this page is returned
@@ -146,6 +149,6 @@ public class AcquistiServiceImp implements AcquistiService{
             return "Error_Templates/err-general";
         }
 
-        return "confirm";
+        return "confirmed";
     }
 }
