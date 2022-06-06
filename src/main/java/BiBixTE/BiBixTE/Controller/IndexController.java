@@ -84,7 +84,7 @@ public class IndexController {
 
         model.addAttribute("userName", user_name_to_display);
         model.addAttribute("conto", conto);
-        log.info("here is : " + clientiServiceImp.getClientBySession(request).getUserName());
+
         return "index.html";
     }
 
@@ -98,7 +98,7 @@ public class IndexController {
 
         model.addAttribute("userName", user_name_to_display);
         model.addAttribute("conto", conto);
-        log.info("here is : " + clientiServiceImp.getClientBySession(request).getUserName());
+
         return "crediti.html";
     }
 }
