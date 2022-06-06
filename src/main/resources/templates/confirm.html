@@ -124,7 +124,7 @@
 </body>
 <script type="text/javascript">
 	document.getElementById("confirm").onclick = function () {
-	PREFIX 			   = "http://localhost:8080/";
+	PREFIX 			   = "https://bibixte.herokuapp.com/";
 	NOME_PRODOTTO 	   = document.getElementById("marca").innerHTML;
 	COSTO_PRODOTTO 	   = document.getElementById("importo").innerHTML;
 	QUANTITA_PRODOTTO  = document.getElementById("quantita").innerHTML;
@@ -132,10 +132,6 @@
 	NOME_PRODOTTO = String(NOME_PRODOTTO);
 	COSTO_PRODOTTO = parseInt(COSTO_PRODOTTO);
 	QUANTITA_PRODOTTO = parseInt(QUANTITA_PRODOTTO);
-	
-	alert("NOME_PRODOTTO: " + NOME_PRODOTTO +
-		"COSTO_PRODOTTO: " + COSTO_PRODOTTO + 
-		"QUANTITA_PRODOTTO: " + QUANTITA_PRODOTTO)
 
 	COSTO_PRODOTTO = COSTO_PRODOTTO / QUANTITA_PRODOTTO;
 
@@ -150,9 +146,6 @@
 	+ QUANTITA_PRODOTTO
 	+ "/"
 	+ INDRIZZO;
-
-	alert(NEXT_LOCATION);
-	window.location.href = NEXT_LOCATION;
 }
 </script>
 </html>
