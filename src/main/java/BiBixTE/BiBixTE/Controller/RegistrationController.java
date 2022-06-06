@@ -41,7 +41,6 @@ public class RegistrationController {
         }
 
         formData.setCodiceDiAttivazione(UUID.randomUUID().toString());
-        log.info("Activation code of form data at moment of registration client:" + formData.getCodiceDiAttivazione());
         clientiService.sendConfirmMail(formData);
 
             clientiRepository.save(new Clienti(formData.getUserName(),
@@ -57,11 +56,7 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registerClienti(@ModelAttribute Clienti cliente, Model model){
         model.addAttribute("cliente", cliente);
-        if (cliente != null){
-            log.info("Clienti getUserName: " + cliente.getUserName());
-            log.info("Clienti getPassword: " + cliente.getPassword());
-            log.info("Clienti getEmail: " + cliente.getEmail());
-        }
+
         return "registrazione.html";
     }
 
