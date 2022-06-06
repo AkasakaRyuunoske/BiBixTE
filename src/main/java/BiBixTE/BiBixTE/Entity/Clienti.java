@@ -46,7 +46,6 @@ public class Clienti {
     @Column(name = "sessionID", nullable = true)
     private String sessionID;
 
-    //Will be used for registration
     public Clienti(String userName, String email, String password, String codiceDiAttivazione){
         this.userName = userName;
         this.email = email;
