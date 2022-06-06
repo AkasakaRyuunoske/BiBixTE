@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Thymeleaf dependency -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head> 
 	<title>BiBixTE</title>
 
@@ -124,7 +124,7 @@
 </body>
 <script type="text/javascript">
 	document.getElementById("confirm").onclick = function () {
-	PREFIX 			   = "https://bibixte.herokuapp.com/";
+	PREFIX 			   = "http://localhost:8080/";
 	NOME_PRODOTTO 	   = document.getElementById("marca").innerHTML;
 	COSTO_PRODOTTO 	   = document.getElementById("importo").innerHTML;
 	QUANTITA_PRODOTTO  = document.getElementById("quantita").innerHTML;
@@ -146,6 +146,8 @@
 	+ QUANTITA_PRODOTTO
 	+ "/"
 	+ INDRIZZO;
+
+	window.location.href = NEXT_LOCATION;
 }
 </script>
 </html>
