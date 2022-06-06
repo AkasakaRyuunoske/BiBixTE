@@ -50,7 +50,7 @@ public class RegistrationController {
 
         model.addAttribute("formData", formData);
 
-        return "result";
+        return "registration_complete";
     }
 
     @GetMapping("/registration")
