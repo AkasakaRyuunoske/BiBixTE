@@ -80,7 +80,7 @@ footer{
 	display: flex;
 	width: 100%;
 	align-items: center;
-	background:linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(back-pepsi.jpg) no-repeat center center;
+	background:linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(back-pepsi.jpg)  no-repeat center center;
 	background-size: cover;
 
 }
@@ -179,32 +179,53 @@ input[type = "submit"]:hover{
 	background-size: cover;
 	}
 
+
 	.grid-container {
-
 		position: relative;
-		left: 450px;
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-column-gap: 50px;
-row-gap: 50px;
-  padding: 10px;
-}
+  		display: inline-grid;
+  		grid-template-columns: auto auto auto;
+		column-gap: 50px;
+		row-gap: 50px;
+ 		padding: 10px;
+		}
 
-.grid-item {
- 
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
+	.grid-item {
+		background-color: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(0, 0, 0, 0.8);
+		border-radius: 5px;
+		padding: 20px;
+		font-size: 30px;
+		text-align: center;
+		}
 
-.product-button{
-	padding: ; background: #316bff ; color: #fff; display: inline-block; border-radius: 8px; font-size: 20px; cursor: pointer;
-}
+	.product-button{
+		padding: ; background: #316bff ; color: #fff; display: inline-block; border-radius: 8px; font-size: 20px; cursor: pointer;
+	}
 
 #p1{left: 200px; top: 100px; } #p2{ left:600px; top:100px; } #p3{} #p4{}
+
+	/* account page */
+
+	.account{
+	height: 700px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background: linear-gradient(0deg, rgba(0,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(0deg, rgba(0,0,0,.2), rgba(0,0,0,0.90)), url(
+		back-ghiaccio.jpg) no-repeat center center;
+	background-size: cover;
+	}
+
+	.account p{
+		position: relative;
+		color: #fff;
+		left: 150px;
+		bottom: 200px;
+	}
+
+	.account h3{
+		color: #000;
+	}
 
 /*pudding of elements */
 
