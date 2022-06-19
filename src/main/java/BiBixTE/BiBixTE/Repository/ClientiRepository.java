@@ -20,7 +20,7 @@ public interface ClientiRepository extends JpaRepository<Clienti, Long> {
      * so i made a custom one.
      *
      * */
-    @Query(value = "SELECT PRIMARY_ID FROM spring_session s where s.SESSION_ID = :sessionID",
+    @Query(value = "SELECT PRIMARY_ID FROM SPRING_SESSION s where s.SESSION_ID = :sessionID",
             nativeQuery = true)
     String getSessionPrimaryIDBySessionID(String sessionID);
 }
